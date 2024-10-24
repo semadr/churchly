@@ -45,6 +45,7 @@ class DFinanceDialog extends StatelessWidget {
                 fWidth: double.infinity,
                 lPad: 12.0,
                 rPad: 12.0,
+                fKey: 'dialogItem',
               ),
               DFinanceFormField(
                 labelHint: 'Amount',
@@ -52,6 +53,7 @@ class DFinanceDialog extends StatelessWidget {
                 fWidth: double.infinity,
                 lPad: 12.0,
                 rPad: 12.0,
+                fKey: 'dialogItem',
               ),
               DContinueButton(
                 dButtonValue: 'Save',
@@ -59,6 +61,7 @@ class DFinanceDialog extends StatelessWidget {
                 rPad: 20.0,
                 lPad: 20.0,
                 bPad: 12.0,
+                
               ),
             ],
           ),

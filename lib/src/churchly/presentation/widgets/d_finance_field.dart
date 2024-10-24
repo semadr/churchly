@@ -6,13 +6,19 @@ class DFinanceFormField extends StatelessWidget {
   final String labelHint;
   final TextInputType textInputType;
   final double fWidth;
-  final double lPad, rPad;
+  final double lPad;
+  final double rPad;
+  final String fKey;
 
-  const DFinanceFormField(
-      {super.key,
-      required this.labelHint,
-      required this.textInputType,
-      required this.fWidth, required this.lPad, required this.rPad });
+  const DFinanceFormField({
+    super.key,
+    required this.labelHint,
+    required this.textInputType,
+    required this.fWidth,
+    required this.lPad,
+    required this.rPad,
+    required this.fKey,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,11 @@ class DFinanceFormField extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(left: lPad, right: rPad),
         child: TextField(
+          onChanged: (dInput) {
+            // ChurchFinanceEvent event = ChurchFinanceEvent()
+          },
           controller: textEditingController,
+          // onChanged: () {},
           keyboardType: textInputType,
           decoration: InputDecoration(
             contentPadding:
@@ -66,12 +76,6 @@ class DFinanceFormField extends StatelessWidget {
               ),
               borderRadius: const BorderRadius.all(Radius.circular(30.0)),
             ),
-            // suffixIcon: IconButton(
-            //   onPressed: () => textEditingController.clear(),
-            //   icon: const Icon(Icons.clear),
-            //   color: dColors.dBlackColor,
-            //   iconSize: 16.0,
-            // ),
           ),
         ),
       ),

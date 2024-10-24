@@ -42,6 +42,7 @@ class DAccountRow extends StatelessWidget {
               fWidth: 150.0,
               lPad: 16.0,
               rPad: 0.0,
+              fKey: 'pageItem',
             ),
             const DFinanceFormField(
               labelHint: 'Amount',
@@ -49,6 +50,7 @@ class DAccountRow extends StatelessWidget {
               fWidth: 100.0,
               lPad: 8.0,
               rPad: 0.0,
+              fKey: 'pageItem',
             ),
             DAddIconButton(
               dIcon: dIcon,
