@@ -1,6 +1,9 @@
+import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
+import 'package:churchly/src/core/usecases/d_finance_field_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DFinanceFormField extends StatelessWidget {
   final String labelHint;
@@ -34,10 +37,12 @@ class DFinanceFormField extends StatelessWidget {
         padding: EdgeInsets.only(left: lPad, right: rPad),
         child: TextField(
           onChanged: (dInput) {
-            // ChurchFinanceEvent event = ChurchFinanceEvent()
+            DFinanceFieldEvent dFinanceFieldEvent = DFinanceFieldEvent();
+            ChurchFinanceEvent event =
+                dFinanceFieldEvent.findFinanceFieldEvent(dInput, fKey);
+            BlocProvider.of<ChurchFinanceBloc>(context).add(event);
           },
           controller: textEditingController,
-          // onChanged: () {},
           keyboardType: textInputType,
           decoration: InputDecoration(
             contentPadding:

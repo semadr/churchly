@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FinanceData extends ChangeNotifier {
   String? _item;
   String? _price;
-  int _itemCount = 3; // The Count of the List Items.
+  int _itemCount = 4; // The Count of the List Items.
 
   String get item => _item!;
   String get price => _price!;

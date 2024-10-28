@@ -24,10 +24,8 @@ final class OnChurchFinanceChangeAmount extends ChurchFinanceEvent {
 }
 
 final class OnChurchFinanceSubmitted extends ChurchFinanceEvent {
-  final String? item;
-  final String? amount;
-  const OnChurchFinanceSubmitted({this.item, this.amount});
+  const OnChurchFinanceSubmitted();
 
   @override
-  List<Object> get props => [item!, amount!];
+  List<Object> get props => [];
 }

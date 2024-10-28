@@ -1,7 +1,7 @@
-import 'package:churchly/src/churchly/data/models/finance_data.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_account_row.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DAccountContainer extends StatelessWidget {
@@ -14,7 +14,7 @@ class DAccountContainer extends StatelessWidget {
     required this.fData,
   });
 
-  final FinanceData fData;
+  final List<Map<String, String>> fData;
   final DColors dColors;
   final DFonts dFonts;
   final String accountBoxName;
@@ -76,21 +76,26 @@ class DAccountContainer extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 scrollDirection: Axis.vertical,
-                itemCount: fData.dFinanceView!.length,
+                itemCount: fData.length,
                 itemBuilder: (context, int index) {
-                  if (index == (fData.dFinanceView!.length - 1)) {
+                  if (kDebugMode) print(fData.length.toString());
+                  if (index == (fData.length - 1)) {
                     return DAccountRow(
-                      itemLabel: fData.dFinanceView![index]['item']!,
-                      item: fData.dFinanceView![index]['item']!,
-                      price: fData.dFinanceView![index]['price']!,
+                      itemLabel: fData[index]['item']!,
+                      item: fData[index]['item']!,
+                      price: fData[index]['amount']!,
+                      category: accountBoxName,
                       dIcon: Icons.add,
+                      index: index,
                     );
                   } else {
                     return DAccountRow(
-                      itemLabel: fData.dFinanceView![index]['item']!,
-                      item: fData.dFinanceView![index]['item']!,
-                      price: fData.dFinanceView![index]['price']!,
+                      itemLabel: fData[index]['item']!,
+                      item: fData[index]['item']!,
+                      price: fData[index]['amount']!,
+                      category: accountBoxName,
                       dIcon: Icons.remove,
+                      index: index,
                     );
                   }
                 },

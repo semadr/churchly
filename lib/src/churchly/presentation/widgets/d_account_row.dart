@@ -1,4 +1,3 @@
-
 import 'package:churchly/src/churchly/presentation/widgets/d_account_row_data.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_finance_field.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_icon_button.dart';
@@ -10,14 +9,18 @@ class DAccountRow extends StatelessWidget {
   final String item;
   final String itemLabel;
   final String price;
+  final String category;
   final IconData dIcon;
+  final int index;
 
   const DAccountRow({
     super.key,
     required this.item,
     required this.itemLabel,
     required this.price,
+    required this.category,
     required this.dIcon,
+    required this.index,
   });
 
   @override
@@ -50,11 +53,12 @@ class DAccountRow extends StatelessWidget {
               fWidth: 100.0,
               lPad: 8.0,
               rPad: 0.0,
-              fKey: 'pageItem',
+              fKey: 'pageAmount',
             ),
             DAddIconButton(
               dIcon: dIcon,
               isKey: 'save',
+              index: index,
             ),
           ],
         ),

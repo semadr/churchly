@@ -48,11 +48,6 @@ class DTextFormField extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
               child: TextField(
-                // onSubmitted: (dInput) {
-                //   DFieldEvent dFieldEvent = DFieldEvent();
-                //   ChurchInfoEvent event = dFieldEvent.findFieldEvent(dInput, labelKey);
-                //   BlocProvider.of<ChurchInfoBloc>(context).add(event);
-                // },
                 onChanged: (dInput) {
                   DFieldEvent dFieldEvent = DFieldEvent();
                   ChurchInfoEvent event =

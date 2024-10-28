@@ -80,6 +80,7 @@ final class AccountYearChangeEvent extends ChurchInfoEvent {
 }
 
 final class SubmittedChangeEvent extends ChurchInfoEvent {
+  
   @override
   List<Object> get props => [];
 }

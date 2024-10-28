@@ -1,4 +1,5 @@
 import 'package:churchly/src/churchly/data/models/finance_data.dart';
+import 'package:churchly/src/churchly/presentation/bloc/d_manage_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -32,6 +33,7 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
     // SubmitTheFields
     on<OnChurchFinanceSubmitted>((event, emit) {
       try {
+        ChurchFinanceItem().addFinanceItem(item!, amount!);
         FinanceData fData = FinanceData();
         final int index = fData.dFinanceView!.length;
 

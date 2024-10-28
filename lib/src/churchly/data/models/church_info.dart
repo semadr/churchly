@@ -18,6 +18,4 @@ class ChurchInfo {
     required this.accountMonth,
     required this.accountYear,
   });
-
-  
 }

@@ -53,7 +53,7 @@ class DFinanceDialog extends StatelessWidget {
                 fWidth: double.infinity,
                 lPad: 12.0,
                 rPad: 12.0,
-                fKey: 'dialogItem',
+                fKey: 'dialogAmount',
               ),
               DContinueButton(
                 dButtonValue: 'Save',
