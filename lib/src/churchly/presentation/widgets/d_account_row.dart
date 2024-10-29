@@ -39,21 +39,23 @@ class DAccountRow extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const DFinanceFormField(
+            DFinanceFormField(
               labelHint: 'Item',
               textInputType: TextInputType.text,
               fWidth: 150.0,
               lPad: 16.0,
               rPad: 0.0,
               fKey: 'pageItem',
+              index: index,
             ),
-            const DFinanceFormField(
+            DFinanceFormField(
               labelHint: 'Amount',
               textInputType: TextInputType.number,
               fWidth: 100.0,
               lPad: 8.0,
               rPad: 0.0,
               fKey: 'pageAmount',
+              index: index,
             ),
             DAddIconButton(
               dIcon: dIcon,

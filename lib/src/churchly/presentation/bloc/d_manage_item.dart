@@ -38,4 +38,28 @@ class ChurchFinanceItem extends Cubit<List<Map<String, String>>> {
       if (kDebugMode) print('Error Deleting Finance Item');
     }
   }
+
+  void updateItem(int index, String dItem) {
+    final updatedList = [...state];
+    if (index >= 0 && index < updatedList.length) {
+      updatedList[index] = {
+        ...updatedList[index],
+        'item': dItem,
+      };
+      emit(updatedList);
+      if(kDebugMode) print('Item Updated Successfully');
+    }
+  }
+
+  void updateAmount(int index, String dAmount) {
+    final updatedList = [...state];
+    if (index >= 0 && index < updatedList.length) {
+      updatedList[index] = {
+        ...updatedList[index],
+        'amount': dAmount,
+      };
+      emit(updatedList);
+      if (kDebugMode) print('Amount Updated Successfully');
+    }
+  }
 }

@@ -33,16 +33,13 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
     // SubmitTheFields
     on<OnChurchFinanceSubmitted>((event, emit) {
       try {
-        ChurchFinanceItem().addFinanceItem(item!, amount!);
-        FinanceData fData = FinanceData();
-        final int index = fData.dFinanceView!.length;
-
         Map<String, String> dFData = {
           'item': item!,
           'amount': amount!,
         };
+        ChurchFinanceItem().addFinanceItem(item!, amount!);
 
-        fData.updateFinanceView(index, dFData);
+
       } catch (e) {
         if (kDebugMode) print('Emiting Error: $e');
       }
