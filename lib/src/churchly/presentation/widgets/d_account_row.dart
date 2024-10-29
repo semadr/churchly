@@ -47,6 +47,7 @@ class DAccountRow extends StatelessWidget {
               rPad: 0.0,
               fKey: 'pageItem',
               index: index,
+              dCart: category,
             ),
             DFinanceFormField(
               labelHint: 'Amount',
@@ -56,11 +57,13 @@ class DAccountRow extends StatelessWidget {
               rPad: 0.0,
               fKey: 'pageAmount',
               index: index,
+              dCart: category,
             ),
             DAddIconButton(
               dIcon: dIcon,
               isKey: 'save',
               index: index,
+              dCart: category,
             ),
           ],
         ),

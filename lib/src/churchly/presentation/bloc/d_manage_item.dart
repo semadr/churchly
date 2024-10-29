@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ChurchFinanceItem extends Cubit<List<Map<String, String>>> {
   ChurchFinanceItem()
       : super([
-          {'item': 'item', 'amount': 'amount'},
-          {'item': 'item', 'amount': 'amount'},
+          {'item': 'Church Offering', 'amount': 'amount'},
+          {'item': 'Church Tithe', 'amount': 'amount'},
           {'item': 'item', 'amount': 'amount'},
           {'item': 'item', 'amount': 'amount'},
         ]);

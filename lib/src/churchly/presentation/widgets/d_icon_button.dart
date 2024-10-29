@@ -9,12 +9,14 @@ class DAddIconButton extends StatelessWidget {
   final IconData? dIcon;
   final String isKey;
   final int index;
+  final String dCart;
 
   const DAddIconButton({
     super.key,
     required this.dIcon,
     required this.isKey,
     required this.index,
+    required this.dCart,
   });
 
   @override
@@ -27,7 +29,7 @@ class DAddIconButton extends StatelessWidget {
       child: IconButton(
         onPressed: () {
           if (dIcon == Icons.add) {
-            ShowFinanceDialog().showFinanceDialog(context, 'Insert New Item');
+            ShowFinanceDialog().showFinanceDialog(context, 'Insert New Item', dCart);
           } else {
             context.read<ChurchFinanceItem>().removeFinanceItem(index);
           }

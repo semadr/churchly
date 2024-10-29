@@ -5,7 +5,12 @@ import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
 
 class DFinanceDialog extends StatelessWidget {
-  const DFinanceDialog({super.key});
+  final String dCart;
+
+  const DFinanceDialog({
+    super.key,
+    required this.dCart,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +52,7 @@ class DFinanceDialog extends StatelessWidget {
                 rPad: 12.0,
                 fKey: 'dialogItem',
                 index: 0,
+                dCart: '',
               ),
               DFinanceFormField(
                 labelHint: 'Amount',
@@ -56,6 +62,7 @@ class DFinanceDialog extends StatelessWidget {
                 rPad: 12.0,
                 fKey: 'dialogAmount',
                 index: 0,
+                dCart: '',
               ),
               DContinueButton(
                 dButtonValue: 'Save',
@@ -63,7 +70,6 @@ class DFinanceDialog extends StatelessWidget {
                 rPad: 20.0,
                 lPad: 20.0,
                 bPad: 12.0,
-                
               ),
             ],
           ),

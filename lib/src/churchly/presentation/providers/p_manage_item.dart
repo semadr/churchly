@@ -6,7 +6,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
   // Map<String, String> financeData;
 
   final List<Map<String, String>> _incomeFinanceView = [
-    {'item': 'item', 'amount': 'amount'},
+    {'item': 'Offering', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},

@@ -1,5 +1,5 @@
 import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
-import 'package:churchly/src/churchly/presentation/bloc/d_manage_item.dart';
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:churchly/src/core/usecases/d_finance_field_event.dart';
@@ -14,6 +14,7 @@ class DFinanceFormField extends StatelessWidget {
   final double rPad;
   final String fKey;
   final int index;
+  final String dCart;
 
   const DFinanceFormField({
     super.key,
@@ -24,6 +25,7 @@ class DFinanceFormField extends StatelessWidget {
     required this.rPad,
     required this.fKey,
     required this.index,
+    required this.dCart,
   });
 
   @override
@@ -48,7 +50,9 @@ class DFinanceFormField extends StatelessWidget {
             if (fKey == 'pageItem' || fKey == 'pageAmount') {
               if (fKey == 'pageItem') {
               } else {
-                context.read<ChurchFinanceItem>().updateAmount(index, dInput);
+                context
+                    .read<ChurchFinanceItemProvider>()
+                    .updateItem(index, dInput, dCart);
               }
             }
           },
