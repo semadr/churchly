@@ -1,9 +1,9 @@
-import 'package:churchly/src/churchly/presentation/bloc/d_manage_item.dart';
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:churchly/src/core/usecases/d_finance_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class DAddIconButton extends StatelessWidget {
   final IconData? dIcon;
@@ -29,9 +29,11 @@ class DAddIconButton extends StatelessWidget {
       child: IconButton(
         onPressed: () {
           if (dIcon == Icons.add) {
-            ShowFinanceDialog().showFinanceDialog(context, 'Insert New Item', dCart);
+            ShowFinanceDialog()
+                .showFinanceDialog(context, 'Insert New Item', dCart);
           } else {
-            context.read<ChurchFinanceItem>().removeFinanceItem(index);
+            Provider.of<ChurchFinanceItemProvider>(context, listen: false)
+                .removeFinanceItem(index, dCart);
           }
         },
         icon: Icon(

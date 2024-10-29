@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 class ChurchFinanceItemProvider extends ChangeNotifier {
   ChurchFinanceItemProvider();
 
-  // Map<String, String> financeData;
 
   String _item = 'item';
   String _amount = 'amount';

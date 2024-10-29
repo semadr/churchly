@@ -1,8 +1,9 @@
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class DFinanceFormField extends StatelessWidget {
   final String labelHint;
@@ -42,19 +43,20 @@ class DFinanceFormField extends StatelessWidget {
           onChanged: (dInput) {
             if (fKey == 'pageItem' || fKey == 'pageAmount') {
               if (fKey == 'pageItem') {
-                context
-                    .read<ChurchFinanceItemProvider>()
+                Provider.of<ChurchFinanceItemProvider>(context, listen: false)
                     .updateItem(index, dInput, dCart);
+                    if(kDebugMode) print('My index:  $index');
               } else {
-                context
-                    .read<ChurchFinanceItemProvider>()
+                Provider.of<ChurchFinanceItemProvider>(context, listen: false)
                     .updateAmount(index, dInput, dCart);
               }
             } else {
               if (fKey == 'dialogItem') {
-                context.read<ChurchFinanceItemProvider>().addItem(dInput);
+                Provider.of<ChurchFinanceItemProvider>(context, listen: false)
+                    .addItem(dInput);
               } else {
-                context.read<ChurchFinanceItemProvider>().addAmount(dInput);
+                Provider.of<ChurchFinanceItemProvider>(context, listen: false)
+                    .addItem(dInput);
               }
             }
           },

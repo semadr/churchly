@@ -1,6 +1,8 @@
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_account_row.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
+import 'package:churchly/src/core/usecases/d_finance_view_builder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -9,15 +11,15 @@ class DAccountContainer extends StatelessWidget {
     super.key,
     required this.dColors,
     required this.dFonts,
-    required this.accountBoxName,
+    required this.dCart,
     required this.accounttBoxRealTimeDate,
     required this.fData,
   });
 
-  final List<Map<String, String>> fData;
+  final ChurchFinanceItemProvider fData;
   final DColors dColors;
   final DFonts dFonts;
-  final String accountBoxName;
+  final String dCart;
   final String accounttBoxRealTimeDate;
 
   @override
@@ -45,7 +47,7 @@ class DAccountContainer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Text(
-                      accountBoxName,
+                      dCart,
                       style: TextStyle(
                         fontSize: dFonts.dFontBody2Size,
                       ),
@@ -76,30 +78,12 @@ class DAccountContainer extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 scrollDirection: Axis.vertical,
-                itemCount: fData.length,
+                itemCount: dCart == 'Income'
+                    ? fData.incomeFinanceView!.length
+                    : fData.expenseFinanceView!.length,
                 itemBuilder: (context, int index) {
-                  if (kDebugMode) {
-                    print('My list length: ${fData.length.toString()}');
-                  }
-                  if (index == (fData.length - 1)) {
-                    return DAccountRow(
-                      itemLabel: fData[index]['item']!,
-                      item: fData[index]['item']!,
-                      price: fData[index]['amount']!,
-                      category: accountBoxName,
-                      dIcon: Icons.add,
-                      index: index,
-                    );
-                  } else {
-                    return DAccountRow(
-                      itemLabel: fData[index]['item']!,
-                      item: fData[index]['item']!,
-                      price: fData[index]['amount']!,
-                      category: accountBoxName,
-                      dIcon: Icons.remove,
-                      index: index,
-                    );
-                  }
+                  return DFinanceViewBuilder()
+                      .financeViewBuilder(index, dCart, fData);
                 },
               ),
             ),

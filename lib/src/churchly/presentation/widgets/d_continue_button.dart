@@ -5,6 +5,7 @@ import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class DContinueButton extends StatelessWidget {
   final String isKey;
@@ -35,11 +36,11 @@ class DContinueButton extends StatelessWidget {
         onPressed: () {
           if (isKey == 'save') {
             ChurchFinanceItemProvider fProvider = ChurchFinanceItemProvider();
-            context
-                .read<ChurchFinanceItemProvider>()
+            Provider.of<ChurchFinanceItemProvider>(context)
                 .addFinanceItem(fProvider.item, fProvider.amount, dCart!);
+
             Navigator.of(context).pop();
-            context.read<ChurchFinanceItemProvider>().clearItemAmount();
+            Provider.of<ChurchFinanceItemProvider>(context).clearItemAmount();
           } else {
             if (isKey == 'create') {
               BlocProvider.of<ChurchInfoBloc>(context)

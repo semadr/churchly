@@ -64,12 +64,13 @@ class DFinanceDialog extends StatelessWidget {
                 index: 0,
                 dCart: dCart,
               ),
-              const DContinueButton(
+              DContinueButton(
                 dButtonValue: 'Save',
                 isKey: 'save',
                 rPad: 20.0,
                 lPad: 20.0,
                 bPad: 12.0,
+                dCart: dCart,
               ),
             ],
           ),

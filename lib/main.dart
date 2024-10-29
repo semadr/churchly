@@ -1,4 +1,3 @@
-import 'package:churchly/src/churchly/data/models/finance_data.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
@@ -13,8 +12,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        Provider(create: (context) => FinanceData()),
-        Provider(create: (context) => ChurchFinanceItemProvider()),
+        ChangeNotifierProvider(
+            create: (context) => ChurchFinanceItemProvider()),
       ],
       child: const MyApp(),
     ),

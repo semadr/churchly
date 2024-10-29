@@ -1,10 +1,12 @@
 import 'package:churchly/src/churchly/presentation/bloc/d_manage_item.dart';
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_account_container.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_account_id.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class FinanceView extends StatelessWidget {
   const FinanceView({super.key, required this.accountId});
@@ -13,6 +15,7 @@ class FinanceView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Provider(create: create);
     DColors dColors = DColors();
     DFonts dFonts = DFonts();
 
@@ -44,36 +47,39 @@ class FinanceView extends StatelessWidget {
             ),
           ],
         ),
-        body: BlocBuilder<ChurchFinanceItem, List<Map<String, String>>>(
-          builder: (context, churchFinanceItem) {
-            return ListView(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              children: [
-                DAccountID(
-                  dColors: dColors,
-                  accountId: accountId!,
-                  dFonts: dFonts,
-                ),
-                DAccountContainer(
-                  fData: churchFinanceItem,
-                  dColors: dColors,
-                  dFonts: dFonts,
-                  accountBoxName: 'Income',
-                  accounttBoxRealTimeDate: 'August 18th',
-                ),
-                DAccountContainer(
-                  fData: churchFinanceItem,
-                  dColors: dColors,
-                  dFonts: dFonts,
-                  accountBoxName: 'Expenses',
-                  accounttBoxRealTimeDate: 'August 18th',
-                ),
-              ],
-            );
-          }
-        ),
+        body: Provider<ChurchFinanceItemProvider>(
+            create: (_) => ChurchFinanceItemProvider(),
+            builder: (context, _) {
+              ChurchFinanceItemProvider churchFinanceItem =
+                  ChurchFinanceItemProvider();
+
+              return ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                children: [
+                  DAccountID(
+                    dColors: dColors,
+                    accountId: accountId!,
+                    dFonts: dFonts,
+                  ),
+                  DAccountContainer(
+                    fData: churchFinanceItem,
+                    dColors: dColors,
+                    dFonts: dFonts,
+                    dCart: 'Income',
+                    accounttBoxRealTimeDate: 'August 18th',
+                  ),
+                  DAccountContainer(
+                    fData: churchFinanceItem,
+                    dColors: dColors,
+                    dFonts: dFonts,
+                    dCart: 'Expenses',
+                    accounttBoxRealTimeDate: 'August 18th',
+                  ),
+                ],
+              );
+            }),
       ),
     );
   }
