@@ -1,8 +1,6 @@
-import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
-import 'package:churchly/src/core/usecases/d_finance_field_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +13,7 @@ class DFinanceFormField extends StatelessWidget {
   final String fKey;
   final int index;
   final String dCart;
+  final TextEditingController? fController;
 
   const DFinanceFormField({
     super.key,
@@ -26,11 +25,12 @@ class DFinanceFormField extends StatelessWidget {
     required this.fKey,
     required this.index,
     required this.dCart,
+    this.fController,
   });
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController textEditingController = TextEditingController();
+    // final TextEditingController textEditingController = TextEditingController();
     final DColors dColors = DColors();
     final DFonts dFonts = DFonts();
 
@@ -42,21 +42,19 @@ class DFinanceFormField extends StatelessWidget {
         padding: EdgeInsets.only(left: lPad, right: rPad),
         child: TextField(
           onChanged: (dInput) {
-            DFinanceFieldEvent dFinanceFieldEvent = DFinanceFieldEvent();
-            ChurchFinanceEvent event =
-                dFinanceFieldEvent.findFinanceFieldEvent(dInput, fKey);
-            BlocProvider.of<ChurchFinanceBloc>(context).add(event);
-
             if (fKey == 'pageItem' || fKey == 'pageAmount') {
               if (fKey == 'pageItem') {
-              } else {
                 context
                     .read<ChurchFinanceItemProvider>()
                     .updateItem(index, dInput, dCart);
+              } else {
+                context
+                    .read<ChurchFinanceItemProvider>()
+                    .updateAmount(index, dInput, dCart);
               }
             }
           },
-          controller: textEditingController,
+          controller: fController,
           keyboardType: textInputType,
           decoration: InputDecoration(
             contentPadding:

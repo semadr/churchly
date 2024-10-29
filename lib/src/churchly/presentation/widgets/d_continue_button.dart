@@ -1,6 +1,6 @@
-import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +12,9 @@ class DContinueButton extends StatelessWidget {
   final double? rPad;
   final double? lPad;
   final double? bPad;
+  final String? dItem;
+  final String? dAmount;
+  final String? dCart;
 
   const DContinueButton({
     super.key,
@@ -20,6 +23,9 @@ class DContinueButton extends StatelessWidget {
     required this.rPad,
     required this.lPad,
     required this.bPad,
+    this.dItem,
+    this.dAmount,
+    this.dCart,
   });
 
   @override
@@ -32,8 +38,9 @@ class DContinueButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           if (isKey == 'save') {
-            BlocProvider.of<ChurchFinanceBloc>(context)
-                .add(const OnChurchFinanceSubmitted());
+            context
+                .read<ChurchFinanceItemProvider>()
+                .addFinanceItem(dItem!, dAmount!, dCart!);
             Navigator.of(context).pop();
           } else {
             if (isKey == 'create') {

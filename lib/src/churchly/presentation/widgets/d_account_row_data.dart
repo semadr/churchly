@@ -18,7 +18,6 @@ class DAccountRowData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.only(left: 16.0, bottom: 8.0, right: 16.0),
       child: Container(
@@ -38,7 +37,7 @@ class DAccountRowData extends StatelessWidget {
               child: Text(
                 '$dItem: $dAmount',
                 style: TextStyle(
-                  fontSize: dFonts.dFontBodySize,
+                  fontSize: dFonts.dFontBody1Size,
                   color: dColors.dBlackColor,
                   fontWeight: dFonts.dFontBodyWeight,
                 ),
