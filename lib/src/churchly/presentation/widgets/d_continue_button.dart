@@ -12,8 +12,6 @@ class DContinueButton extends StatelessWidget {
   final double? rPad;
   final double? lPad;
   final double? bPad;
-  final String? dItem;
-  final String? dAmount;
   final String? dCart;
 
   const DContinueButton({
@@ -23,8 +21,6 @@ class DContinueButton extends StatelessWidget {
     required this.rPad,
     required this.lPad,
     required this.bPad,
-    this.dItem,
-    this.dAmount,
     this.dCart,
   });
 
@@ -38,10 +34,12 @@ class DContinueButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           if (isKey == 'save') {
+            ChurchFinanceItemProvider fProvider = ChurchFinanceItemProvider();
             context
                 .read<ChurchFinanceItemProvider>()
-                .addFinanceItem(dItem!, dAmount!, dCart!);
+                .addFinanceItem(fProvider.item, fProvider.amount, dCart!);
             Navigator.of(context).pop();
+            context.read<ChurchFinanceItemProvider>().clearItemAmount();
           } else {
             if (isKey == 'create') {
               BlocProvider.of<ChurchInfoBloc>(context)

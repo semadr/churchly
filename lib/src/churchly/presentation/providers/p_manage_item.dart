@@ -5,6 +5,9 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
 
   // Map<String, String> financeData;
 
+  String _item = 'item';
+  String _amount = 'amount';
+
   final List<Map<String, String>> _incomeFinanceView = [
     {'item': 'Offering', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
@@ -12,7 +15,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
     {'item': 'item', 'amount': 'amount'},
   ];
   final List<Map<String, String>> _expenseFinanceView = [
-    {'item': 'item', 'amount': 'amount'},
+    {'item': 'Tithe', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
@@ -20,6 +23,24 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
 
   List<Map<String, String>>? get expenseFinanceView => _expenseFinanceView;
   List<Map<String, String>>? get incomeFinanceView => _incomeFinanceView;
+  String get item => _item;
+  String get amount => _amount;
+
+  void addItem(String dItem) {
+    _item = dItem;
+    notifyListeners();
+  }
+
+  void addAmount(String dAmount) {
+    _amount = dAmount;
+    notifyListeners();
+  }
+
+  void clearItemAmount() {
+    _item = '';
+    _amount = '';
+    notifyListeners();
+  }
 
   void addFinanceItem(String dItem, String dAmount, String dCart) {
     if (dCart == 'Income') {

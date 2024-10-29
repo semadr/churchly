@@ -13,7 +13,6 @@ class DFinanceFormField extends StatelessWidget {
   final String fKey;
   final int index;
   final String dCart;
-  final TextEditingController? fController;
 
   const DFinanceFormField({
     super.key,
@@ -25,12 +24,11 @@ class DFinanceFormField extends StatelessWidget {
     required this.fKey,
     required this.index,
     required this.dCart,
-    this.fController,
   });
 
   @override
   Widget build(BuildContext context) {
-    // final TextEditingController textEditingController = TextEditingController();
+    final TextEditingController textEditingController = TextEditingController();
     final DColors dColors = DColors();
     final DFonts dFonts = DFonts();
 
@@ -52,9 +50,15 @@ class DFinanceFormField extends StatelessWidget {
                     .read<ChurchFinanceItemProvider>()
                     .updateAmount(index, dInput, dCart);
               }
+            } else {
+              if (fKey == 'dialogItem') {
+                context.read<ChurchFinanceItemProvider>().addItem(dInput);
+              } else {
+                context.read<ChurchFinanceItemProvider>().addAmount(dInput);
+              }
             }
           },
-          controller: fController,
+          controller: textEditingController,
           keyboardType: textInputType,
           decoration: InputDecoration(
             contentPadding:

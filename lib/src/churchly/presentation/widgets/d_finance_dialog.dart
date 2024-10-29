@@ -16,8 +16,6 @@ class DFinanceDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     DFonts dFonts = DFonts();
     DColors dColors = DColors();
-    TextEditingController fItemController = TextEditingController();
-    TextEditingController fAmountController = TextEditingController();
 
     return Center(
       child: SizedBox(
@@ -54,8 +52,7 @@ class DFinanceDialog extends StatelessWidget {
                 rPad: 12.0,
                 fKey: 'dialogItem',
                 index: 0,
-                dCart: '',
-                fController: fItemController,
+                dCart: dCart,
               ),
               DFinanceFormField(
                 labelHint: 'Amount',
@@ -65,17 +62,14 @@ class DFinanceDialog extends StatelessWidget {
                 rPad: 12.0,
                 fKey: 'dialogAmount',
                 index: 0,
-                dCart: '',
-                fController: fAmountController,
+                dCart: dCart,
               ),
-              DContinueButton(
+              const DContinueButton(
                 dButtonValue: 'Save',
                 isKey: 'save',
                 rPad: 20.0,
                 lPad: 20.0,
                 bPad: 12.0,
-                dItem: fItemController.text,
-                dAmount: fAmountController.text,
               ),
             ],
           ),
