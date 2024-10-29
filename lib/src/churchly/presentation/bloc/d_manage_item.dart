@@ -47,7 +47,7 @@ class ChurchFinanceItem extends Cubit<List<Map<String, String>>> {
         'item': dItem,
       };
       emit(updatedList);
-      if(kDebugMode) print('Item Updated Successfully');
+      if (kDebugMode) print('Item Updated Successfully');
     }
   }
 

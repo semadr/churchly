@@ -1,4 +1,3 @@
-import 'package:churchly/src/churchly/data/models/finance_data.dart';
 import 'package:churchly/src/churchly/presentation/bloc/d_manage_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,10 +32,10 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
     // SubmitTheFields
     on<OnChurchFinanceSubmitted>((event, emit) {
       try {
-        Map<String, String> dFData = {
-          'item': item!,
-          'amount': amount!,
-        };
+        // Map<String, String> dFData = {
+        //   'item': item!,
+        //   'amount': amount!,
+        // };
         ChurchFinanceItem().addFinanceItem(item!, amount!);
 
 

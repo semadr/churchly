@@ -78,7 +78,9 @@ class DAccountContainer extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 itemCount: fData.length,
                 itemBuilder: (context, int index) {
-                  if (kDebugMode) print(fData.length.toString());
+                  if (kDebugMode) {
+                    print('My list length: ${fData.length.toString()}');
+                  }
                   if (index == (fData.length - 1)) {
                     return DAccountRow(
                       itemLabel: fData[index]['item']!,
