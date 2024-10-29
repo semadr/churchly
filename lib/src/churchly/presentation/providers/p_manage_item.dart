@@ -19,19 +19,24 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
   ];
 
   List<Map<String, String>>? get expenseFinanceView => _expenseFinanceView;
+  List<Map<String, String>>? get incomeFinanceView => _incomeFinanceView;
 
   void addFinanceItem(String dItem, String dAmount, String dCart) {
     if (dCart == 'Income') {
-      _incomeFinanceView.add({});
+      _incomeFinanceView.add({'item': dItem, 'amount': dAmount});
+    } else {
+      _expenseFinanceView.add({'item': dItem, 'amount': dAmount});
     }
-    _expenseFinanceView.add({});
+    notifyListeners();
   }
 
   void removeFinanceItem(int index, String dCart) {
     if (dCart == 'Income') {
       _incomeFinanceView.removeAt(index);
+    } else {
+      _expenseFinanceView.removeAt(index);
     }
-    _expenseFinanceView.removeAt(index);
+    notifyListeners();
   }
 
   void updateItem(int index, String dItem, String dCart) {
@@ -40,13 +45,21 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
       if (index >= 0 && index < updatedList.length) {
         updatedList['item'] = dItem;
         _incomeFinanceView.insert(index, updatedList);
+        if (kDebugMode) {
+          print('Item Updated Successfully!');
+        }
+      }
+    } else {
+      final updatedList = _expenseFinanceView[index];
+      if (index >= 0 && index < updatedList.length) {
+        updatedList['item'] = dItem;
+        _incomeFinanceView.insert(index, updatedList);
+        if (kDebugMode) {
+          print('Item Updated Successfully!');
+        }
       }
     }
-    final updatedList = _expenseFinanceView[index];
-    if (index >= 0 && index < updatedList.length) {
-      updatedList['item'] = dItem;
-      _incomeFinanceView.insert(index, updatedList);
-    }
+    notifyListeners();
   }
 
   void updateAmount(int index, String dAmount, String dCart) {
@@ -55,12 +68,20 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
       if (index >= 0 && index < updatedList.length) {
         updatedList['amount'] = dAmount;
         _incomeFinanceView.insert(index, updatedList);
+        if (kDebugMode) {
+          print('Amount Updated Successfully!');
+        }
+      }
+    } else {
+      final updatedList = _expenseFinanceView[index];
+      if (index >= 0 && index < updatedList.length) {
+        updatedList['amount'] = dAmount;
+        _incomeFinanceView.insert(index, updatedList);
+        if (kDebugMode) {
+          print('Amount Updated Successfully!');
+        }
       }
     }
-    final updatedList = _expenseFinanceView[index];
-    if (index >= 0 && index < updatedList.length) {
-      updatedList['amount'] = dAmount;
-      _incomeFinanceView.insert(index, updatedList);
-    }
+    notifyListeners();
   }
 }
