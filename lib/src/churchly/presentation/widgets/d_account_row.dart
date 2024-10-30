@@ -61,7 +61,7 @@ class DAccountRow extends StatelessWidget {
             ),
             DAddIconButton(
               dIcon: dIcon,
-              isKey: '',
+              isKey: 'pageIcon',
               index: index,
               dCart: category,
             ),

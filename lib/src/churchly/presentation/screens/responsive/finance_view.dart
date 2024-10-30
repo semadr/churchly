@@ -6,7 +6,6 @@ import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class FinanceView extends StatelessWidget {
   const FinanceView({super.key, required this.accountId});
@@ -47,39 +46,32 @@ class FinanceView extends StatelessWidget {
             ),
           ],
         ),
-        body: Provider<ChurchFinanceItemProvider>(
-            create: (context) => ChurchFinanceItemProvider(),
-            builder: (context, _) {
-              ChurchFinanceItemProvider cItemProvider =
-                  ChurchFinanceItemProvider();
-
-              return ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                children: [
-                  DAccountID(
-                    dColors: dColors,
-                    accountId: accountId!,
-                    dFonts: dFonts,
-                  ),
-                  DAccountContainer(
-                    fData: cItemProvider,
-                    dColors: dColors,
-                    dFonts: dFonts,
-                    dCart: 'Income',
-                    accounttBoxRealTimeDate: 'August 18th',
-                  ),
-                  DAccountContainer(
-                    fData: cItemProvider,
-                    dColors: dColors,
-                    dFonts: dFonts,
-                    dCart: 'Expenses',
-                    accounttBoxRealTimeDate: 'August 18th',
-                  ),
-                ],
-              );
-            }),
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          physics: const ClampingScrollPhysics(),
+          children: [
+            DAccountID(
+              dColors: dColors,
+              accountId: accountId!,
+              dFonts: dFonts,
+            ),
+            DAccountContainer(
+              fData: context.watch<ChurchFinanceItemProvider>().incomeFinanceView!,
+              dColors: dColors,
+              dFonts: dFonts,
+              dCart: 'Income',
+              accounttBoxRealTimeDate: 'August 18th',
+            ),
+            DAccountContainer(
+              fData: context.watch<ChurchFinanceItemProvider>().expenseFinanceView!,
+              dColors: dColors,
+              dFonts: dFonts,
+              dCart: 'Expenses',
+              accounttBoxRealTimeDate: 'August 18th',
+            ),
+          ],
+        ),
       ),
     );
   }

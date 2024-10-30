@@ -1,4 +1,3 @@
-import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:churchly/src/core/usecases/d_finance_view_builder.dart';
@@ -14,7 +13,7 @@ class DAccountContainer extends StatelessWidget {
     required this.fData,
   });
 
-  final ChurchFinanceItemProvider fData;
+  final List<Map<String, String>> fData;
   final DColors dColors;
   final DFonts dFonts;
   final String dCart;
@@ -76,9 +75,7 @@ class DAccountContainer extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 scrollDirection: Axis.vertical,
-                itemCount: dCart == 'Income'
-                    ? fData.incomeFinanceView!.length
-                    : fData.expenseFinanceView!.length,
+                itemCount: fData.length,
                 itemBuilder: (context, int index) {
                   return DFinanceViewBuilder()
                       .financeViewBuilder(index, dCart, fData);
