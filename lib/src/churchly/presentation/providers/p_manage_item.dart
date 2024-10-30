@@ -1,15 +1,14 @@
 import 'package:flutter/foundation.dart';
+// import 'package:provider/provider.dart';
 
 class ChurchFinanceItemProvider extends ChangeNotifier {
   ChurchFinanceItemProvider();
-
 
   String _item = 'item';
   String _amount = 'amount';
 
   final List<Map<String, String>> _incomeFinanceView = [
     {'item': 'Offering', 'amount': 'amount'},
-    {'item': 'item', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
     {'item': 'item', 'amount': 'amount'},
   ];

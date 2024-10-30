@@ -48,9 +48,9 @@ class FinanceView extends StatelessWidget {
           ],
         ),
         body: Provider<ChurchFinanceItemProvider>(
-            create: (_) => ChurchFinanceItemProvider(),
+            create: (context) => ChurchFinanceItemProvider(),
             builder: (context, _) {
-              ChurchFinanceItemProvider churchFinanceItem =
+              ChurchFinanceItemProvider cItemProvider =
                   ChurchFinanceItemProvider();
 
               return ListView(
@@ -64,14 +64,14 @@ class FinanceView extends StatelessWidget {
                     dFonts: dFonts,
                   ),
                   DAccountContainer(
-                    fData: churchFinanceItem,
+                    fData: cItemProvider,
                     dColors: dColors,
                     dFonts: dFonts,
                     dCart: 'Income',
                     accounttBoxRealTimeDate: 'August 18th',
                   ),
                   DAccountContainer(
-                    fData: churchFinanceItem,
+                    fData: cItemProvider,
                     dColors: dColors,
                     dFonts: dFonts,
                     dCart: 'Expenses',

@@ -36,11 +36,11 @@ class DContinueButton extends StatelessWidget {
         onPressed: () {
           if (isKey == 'save') {
             ChurchFinanceItemProvider fProvider = ChurchFinanceItemProvider();
-            Provider.of<ChurchFinanceItemProvider>(context)
+            Provider.of<ChurchFinanceItemProvider>(context, listen: false)
                 .addFinanceItem(fProvider.item, fProvider.amount, dCart!);
 
             Navigator.of(context).pop();
-            Provider.of<ChurchFinanceItemProvider>(context).clearItemAmount();
+            Provider.of<ChurchFinanceItemProvider>(context, listen: false).clearItemAmount();
           } else {
             if (isKey == 'create') {
               BlocProvider.of<ChurchInfoBloc>(context)

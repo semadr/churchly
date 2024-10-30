@@ -12,8 +12,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-            create: (context) => ChurchFinanceItemProvider()),
+        ChangeNotifierProvider(create: (_) => ChurchFinanceItemProvider()),
       ],
       child: const MyApp(),
     ),

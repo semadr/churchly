@@ -19,7 +19,8 @@ class DFinanceDialog extends StatelessWidget {
 
     return Center(
       child: SizedBox(
-        height: 400.0,
+        width: double.infinity,
+        height: 650,
         child: AlertDialog(
           elevation: 0.0,
           title: Row(
@@ -56,7 +57,7 @@ class DFinanceDialog extends StatelessWidget {
               ),
               DFinanceFormField(
                 labelHint: 'Amount',
-                textInputType: TextInputType.text,
+                textInputType: TextInputType.number,
                 fWidth: double.infinity,
                 lPad: 12.0,
                 rPad: 12.0,

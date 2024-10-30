@@ -2,6 +2,7 @@ import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart'
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:churchly/src/core/usecases/d_finance_dialog.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,12 +29,16 @@ class DAddIconButton extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8.0),
       child: IconButton(
         onPressed: () {
-          if (dIcon == Icons.add) {
-            ShowFinanceDialog()
-                .showFinanceDialog(context, 'Insert New Item', dCart);
-          } else {
-            Provider.of<ChurchFinanceItemProvider>(context, listen: false)
-                .removeFinanceItem(index, dCart);
+          try {
+            if (dIcon == Icons.add) {
+              ShowFinanceDialog()
+                  .showFinanceDialog(context, 'Insert New Item', dCart);
+            } else if (dIcon == Icons.remove) {
+              Provider.of<ChurchFinanceItemProvider>(context, listen: false)
+                  .removeFinanceItem(index, dCart);
+            }
+          } on Exception catch (e) {
+            if (kDebugMode) print('Error: $e');
           }
         },
         icon: Icon(

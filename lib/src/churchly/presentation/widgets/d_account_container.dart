@@ -1,9 +1,7 @@
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
-import 'package:churchly/src/churchly/presentation/widgets/d_account_row.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:churchly/src/core/usecases/d_finance_view_builder.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DAccountContainer extends StatelessWidget {
