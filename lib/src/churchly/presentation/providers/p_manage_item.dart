@@ -35,16 +35,16 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
   }
 
   void clearItemAmount() {
-    _item = '';
-    _amount = '';
+    _item = 'item';
+    _amount = 'amount';
     notifyListeners();
   }
 
-  void addFinanceItem(String dItem, String dAmount, String dCart) {
+  void addFinanceItem(String dCart) {
     if (dCart == 'Income') {
-      _incomeFinanceView.add({'item': dItem, 'amount': dAmount});
+      _incomeFinanceView.add({'item': _item, 'amount': _amount});
     } else {
-      _expenseFinanceView.add({'item': dItem, 'amount': dAmount});
+      _expenseFinanceView.add({'item': _item, 'amount': _amount});
     }
     notifyListeners();
   }
@@ -60,8 +60,8 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
 
   void updateItem(int index, String dItem, String dCart) {
     if (dCart == 'Income') {
-      final updatedList = _incomeFinanceView[index];
-      if (index >= 0 && index < updatedList.length) {
+      Map<String, String> updatedList = _incomeFinanceView[index];
+      if (index >= 0 && index < _expenseFinanceView.length) {
         updatedList['item'] = dItem;
         _incomeFinanceView[index] = updatedList;
         if (kDebugMode) {
@@ -69,8 +69,8 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
         }
       }
     } else {
-      final updatedList = _expenseFinanceView[index];
-      if (index >= 0 && index < updatedList.length) {
+      Map<String, String> updatedList = _expenseFinanceView[index];
+      if (index >= 0 && index < _expenseFinanceView.length) {
         updatedList['item'] = dItem;
         _expenseFinanceView[index] = updatedList;
         if (kDebugMode) {
@@ -83,8 +83,8 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
 
   void updateAmount(int index, String dAmount, String dCart) {
     if (dCart == 'Income') {
-      final updatedList = _incomeFinanceView[index];
-      if (index >= 0 && index < updatedList.length) {
+      Map<String, String> updatedList = _incomeFinanceView[index];
+      if (index >= 0 && index < _incomeFinanceView.length) {
         updatedList['amount'] = dAmount;
         _incomeFinanceView[index] = updatedList;
         if (kDebugMode) {
@@ -92,8 +92,8 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
         }
       }
     } else {
-      final updatedList = _expenseFinanceView[index];
-      if (index >= 0 && index < updatedList.length) {
+      Map<String, String> updatedList = _expenseFinanceView[index];
+      if (index >= 0 && index < _expenseFinanceView.length) {
         updatedList['amount'] = dAmount;
         _expenseFinanceView[index] = updatedList;
         if (kDebugMode) {

@@ -40,13 +40,14 @@ class DFinanceFormField extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(left: lPad, right: rPad),
         child: TextField(
-          onChanged: (dInput) {
+          onSubmitted: (dInput) {
             if (fKey == 'pageItem' || fKey == 'pageAmount') {
               if (fKey == 'pageItem') {
-                String fInput = textEditingController.text;
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false)
-                    .updateItem(index, fInput, dCart);
-                if (kDebugMode) print('My index:  $index');
+                    .updateItem(index, dInput, dCart);
+                if (kDebugMode) {
+                  print('My index:  $index');
+                }
               } else {
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false)
                     .updateAmount(index, dInput, dCart);
@@ -57,10 +58,11 @@ class DFinanceFormField extends StatelessWidget {
                     .addItem(dInput);
               } else {
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false)
-                    .addItem(dInput);
+                    .addAmount(dInput);
               }
             }
           },
+          onChanged: (dInput) async {},
           controller: textEditingController,
           keyboardType: textInputType,
           decoration: InputDecoration(

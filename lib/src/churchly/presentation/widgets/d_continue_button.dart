@@ -35,12 +35,12 @@ class DContinueButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           if (isKey == 'save') {
-            ChurchFinanceItemProvider fProvider = ChurchFinanceItemProvider();
             Provider.of<ChurchFinanceItemProvider>(context, listen: false)
-                .addFinanceItem(fProvider.item, fProvider.amount, dCart!);
+                .addFinanceItem(dCart!);
 
             Navigator.of(context).pop();
-            Provider.of<ChurchFinanceItemProvider>(context, listen: false).clearItemAmount();
+            Provider.of<ChurchFinanceItemProvider>(context, listen: false)
+                .clearItemAmount();
           } else {
             if (isKey == 'create') {
               BlocProvider.of<ChurchInfoBloc>(context)
@@ -50,8 +50,6 @@ class DContinueButton extends StatelessWidget {
                   .add(OnSubmittedChangeEvent());
             }
           }
-
-          // Navigator.of(context).pushNamed('/financeView');
         },
         style: ButtonStyle(
           elevation: const MaterialStatePropertyAll(0.0),
