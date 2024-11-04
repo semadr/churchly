@@ -43,9 +43,10 @@ class DFinanceFormField extends StatelessWidget {
           onChanged: (dInput) {
             if (fKey == 'pageItem' || fKey == 'pageAmount') {
               if (fKey == 'pageItem') {
+                String fInput = textEditingController.text;
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false)
-                    .updateItem(index, dInput, dCart);
-                    if(kDebugMode) print('My index:  $index');
+                    .updateItem(index, fInput, dCart);
+                if (kDebugMode) print('My index:  $index');
               } else {
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false)
                     .updateAmount(index, dInput, dCart);

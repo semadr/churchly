@@ -63,7 +63,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
       final updatedList = _incomeFinanceView[index];
       if (index >= 0 && index < updatedList.length) {
         updatedList['item'] = dItem;
-        _incomeFinanceView.insert(index, updatedList);
+        _incomeFinanceView[index] = updatedList;
         if (kDebugMode) {
           print('Item Updated Successfully!');
         }
@@ -72,7 +72,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
       final updatedList = _expenseFinanceView[index];
       if (index >= 0 && index < updatedList.length) {
         updatedList['item'] = dItem;
-        _incomeFinanceView.insert(index, updatedList);
+        _expenseFinanceView[index] = updatedList;
         if (kDebugMode) {
           print('Item Updated Successfully!');
         }
@@ -86,7 +86,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
       final updatedList = _incomeFinanceView[index];
       if (index >= 0 && index < updatedList.length) {
         updatedList['amount'] = dAmount;
-        _incomeFinanceView.insert(index, updatedList);
+        _incomeFinanceView[index] = updatedList;
         if (kDebugMode) {
           print('Amount Updated Successfully!');
         }
@@ -95,7 +95,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
       final updatedList = _expenseFinanceView[index];
       if (index >= 0 && index < updatedList.length) {
         updatedList['amount'] = dAmount;
-        _incomeFinanceView.insert(index, updatedList);
+        _expenseFinanceView[index] = updatedList;
         if (kDebugMode) {
           print('Amount Updated Successfully!');
         }
