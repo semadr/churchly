@@ -103,4 +103,41 @@ class Api {
       };
     }
   }
+
+  static Future<Map<String, dynamic>?> getMonthlyFinancialData(
+      String cid, String month) async {
+    Uri url = Uri.parse("${baseUrl}fetch");
+
+    try {
+      final response = await http.post(
+        url,
+        body: {
+          "requestID": cid,
+          "month": month,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data != null) {
+          return {
+            "month": month,
+            "Income": data['Income'] ?? [],
+            "Expence": data['Expense'] ?? [],
+          };
+        }
+      } else {
+        if (kDebugMode) {
+          print(
+              "Failed to get Financial Data (getMonthlyFinancialData): ${response.statusCode}");
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("'Error retrieving church (getMonthlyFinancialData): $e");
+      }
+      return {'Message': 'An Error Occured...'};
+    }
+    return null;
+  }
 }
