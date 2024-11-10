@@ -24,8 +24,9 @@ final class OnChurchFinanceChangeAmount extends ChurchFinanceEvent {
 }
 
 final class OnChurchFinanceSubmitted extends ChurchFinanceEvent {
-  const OnChurchFinanceSubmitted();
+  final BuildContext? context;
+  const OnChurchFinanceSubmitted({required this.context});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [context!];
 }

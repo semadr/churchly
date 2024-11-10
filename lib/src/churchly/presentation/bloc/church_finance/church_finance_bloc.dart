@@ -1,7 +1,10 @@
 // import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:provider/provider.dart';
 
 part 'church_finance_event.dart';
 part 'church_finance_state.dart';
@@ -32,9 +35,8 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
     // SubmitTheFields
     on<OnChurchFinanceSubmitted>((event, emit) {
       try {
-        // ChurchFinanceItemProvider? fProvider;
-        // final cdataI = fProvider!.incomeFinanceView;
-        // final cdataE = fProvider.expenseFinanceView;
+        emit(ChurchFinanceLoading());
+        Provider.of<ChurchFinanceItemProvider>(event.context!);
       } catch (e) {
         if (kDebugMode) print('Emiting Error: $e');
       }

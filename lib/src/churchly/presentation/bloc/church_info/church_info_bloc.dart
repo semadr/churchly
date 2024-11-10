@@ -111,10 +111,6 @@ class ChurchInfoBloc extends Bloc<ChurchInfoEvent, ChurchInfoState> {
     on<SubmittedChangeEvent>((event, emit) async {
       try {
         emit(ChurchInfoLoading());
-        // Future.delayed(
-        //   const Duration(milliseconds: 4000),
-        //   () => emit(ChurchInfoLoading()),
-        // );
         Map<String, String> churchInfo = {
           "branchName": branchName!,
           "address": address!,

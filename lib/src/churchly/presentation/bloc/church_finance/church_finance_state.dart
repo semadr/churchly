@@ -18,3 +18,5 @@ final class ChurchFinanceCreateSuceeded extends ChurchFinanceState {
   @override
   List<Object> get props => [];
 }
+
+final class ChurchFinanceLoading extends ChurchFinanceState {}
