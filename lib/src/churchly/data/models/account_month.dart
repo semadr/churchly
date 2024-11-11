@@ -18,13 +18,13 @@ class AccountMonth {
     'December',
   ];
 
-  static List<DropdownMenuEntry<Widget?>> accountMonthChildren() {
+  static List<DropdownMenuEntry<String?>> accountMonthChildren() {
     // Month Length.
     int mLength = AccountMonth().months.length;
     // Length of the Producing Widgets.
-    List<DropdownMenuEntry<Widget?>> fLength = [];
+    List<DropdownMenuEntry<String?>> fLength = [];
     for (int i = 0; i < mLength; i++) {
-      fLength[i] = DropdownMenuEntry<Widget?>(
+      fLength.add(DropdownMenuEntry<String?>(
         enabled: true,
         trailingIcon: Icon(
           Icons.pie_chart,
@@ -32,8 +32,8 @@ class AccountMonth {
           color: DColors().dBlackColor,
         ),
         label: AccountMonth().months[i],
-        value: Text(AccountMonth().months[i]),
-      );
+        value: AccountMonth().months[i],
+      ));
     }
     return fLength;
   }
