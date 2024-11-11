@@ -17,7 +17,7 @@ class FinanceView extends StatelessWidget {
   Widget build(BuildContext context) {
     DColors dColors = DColors();
     DFonts dFonts = DFonts();
-    // final dWidth = MediaQuery.of(context).size.width;
+    
     // final dHeight = MediaQuery.of(context).size.height;
 
     return BlocProvider(
