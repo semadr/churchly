@@ -7,7 +7,10 @@ class ShowFinanceDialog {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return DFinanceDialog(dCart: dCart);
+        return dFinanceDialog(
+          context: context,
+          dCart: dCart,
+        );
       },
     );
   }

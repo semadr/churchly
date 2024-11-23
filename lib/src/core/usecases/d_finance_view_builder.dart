@@ -3,13 +3,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DFinanceViewBuilder {
-  DAccountRow financeViewBuilder(
-      int index, String dCart, List<Map<String, String>> fData) {
+  Widget financeViewBuilder(
+      int index, String dCart, List<Map<String, String>> fData, BuildContext context) {
     if (kDebugMode) {
       print('My list length: ${fData.length}');
     }
     if (index == (fData.length - 1)) {
-      return DAccountRow(
+      return dAccountRow(
+        context: context,
         itemLabel: fData[index]['item']!,
         item: fData[index]['item']!,
         price: fData[index]['amount']!,
@@ -18,7 +19,8 @@ class DFinanceViewBuilder {
         index: index,
       );
     } else {
-      return DAccountRow(
+      return dAccountRow(
+        context: context,
         itemLabel: fData[index]['item']!,
         item: fData[index]['item']!,
         price: fData[index]['amount']!,

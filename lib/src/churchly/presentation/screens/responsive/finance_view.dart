@@ -17,7 +17,7 @@ class FinanceView extends StatelessWidget {
   Widget build(BuildContext context) {
     DColors dColors = DColors();
     DFonts dFonts = DFonts();
-    
+
     // final dHeight = MediaQuery.of(context).size.height;
 
     return BlocProvider(
@@ -53,16 +53,19 @@ class FinanceView extends StatelessWidget {
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
           children: [
-            DAccountID(
+            dAccountID(
+              context: context,
               dColors: dColors,
               accountId: accountId!,
               dFonts: dFonts,
             ),
-            DMonthPick(
+            dMonthPick(
+              context: context,
               dColors: dColors,
               dFonts: dFonts,
             ),
-            DAccountContainer(
+            dAccountContainer(
+              fcontext: context,
               fData:
                   context.watch<ChurchFinanceItemProvider>().incomeFinanceView!,
               dColors: dColors,
@@ -70,7 +73,8 @@ class FinanceView extends StatelessWidget {
               dCart: 'Income',
               accounttBoxRealTimeDate: 'August 18th',
             ),
-            DAccountContainer(
+            dAccountContainer(
+              fcontext: context,
               fData: context
                   .watch<ChurchFinanceItemProvider>()
                   .expenseFinanceView!,
