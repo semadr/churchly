@@ -104,6 +104,48 @@ class Api {
     }
   }
 
+  static Future<Map<String, dynamic>?> updateMonthlyFinancial(
+      String cid, String month) async {
+    Uri url = Uri.parse("${baseUrl}update");
+
+    try {
+      final response = await http.post(
+        url,
+        body: {
+          "request ID": cid,
+          "month": month,
+        },
+      );
+
+      // Handle the response
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return {
+          "status": "success",
+          "message": "Financial Data Updated Successfully!",
+          "updatedData": data,
+        };
+      } else {
+        if (kDebugMode) {
+          print(
+              "Failed to update financial dart (updateMonthlyFinancialData): ${response.statusCode} ");
+        }
+        return {
+          "status": "error",
+          "message": "Failed to update financial data.",
+        };
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error updataing financial data (updateMont): $e");
+      }
+      return {
+        "status": "error",
+        "message": "An error occurred while updating financial data.",
+      };
+    }
+  }
+
   static Future<Map<String, dynamic>?> getMonthlyFinancialData(
       String cid, String month) async {
     Uri url = Uri.parse("${baseUrl}fetch");
