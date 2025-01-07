@@ -80,9 +80,12 @@ final class AccountYearChangeEvent extends ChurchInfoEvent {
 }
 
 final class SubmittedChangeEvent extends ChurchInfoEvent {
-  
+  final BuildContext? context;
+
+  const SubmittedChangeEvent({required this.context});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [context!];
 }
   
 /*

@@ -8,6 +8,8 @@ import 'package:http/http.dart' as http;
 class Api {
   static const baseUrl = "http://192.168.0.166:3000/api/rChurch/";
 
+  // #1 Add Church
+
   static Future<Map<String, String?>> addChurch(
       Map<String, String> cdata) async {
     Uri url = Uri.parse("${baseUrl}store");
@@ -50,6 +52,8 @@ class Api {
       };
     }
   }
+
+  // #2 Get Church id
 
   static Future<Map<int, String?>> getChurchId(String cid) async {
     Uri url = Uri.parse("${baseUrl}fetch");
@@ -104,8 +108,10 @@ class Api {
     }
   }
 
-  static Future<Map<String, dynamic>?> updateMonthlyFinancial(
-      String cid, String month, List fData) async {
+  // #3 Update Church Financial Info to database.
+
+  static Future<Map<String, dynamic>?> updateMonthlyFinancial({
+      String? cid, String? month, Map? fData}) async {
     Uri url = Uri.parse("${baseUrl}updateFinanceData");
 
     try {
@@ -146,6 +152,8 @@ class Api {
       };
     }
   }
+
+  // #4 - Get Monthly Chruch Financial Data
 
   static Future<Map<String, dynamic>?> getMonthlyFinancialData(
       String cid, String month) async {

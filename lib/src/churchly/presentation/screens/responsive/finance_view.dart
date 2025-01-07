@@ -3,6 +3,7 @@ import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart'
 import 'package:churchly/src/churchly/presentation/widgets/d_account_container.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_account_id.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_amount_pick.dart';
+import 'package:churchly/src/churchly/presentation/widgets/d_continue_button.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +84,13 @@ class FinanceView extends StatelessWidget {
               dCart: 'Expenses',
               accounttBoxRealTimeDate: 'August 18th',
             ),
+            dContinueButton(
+                context: context,
+                isKey: 'update',
+                dButtonValue: 'Save Month',
+                rPad: 50.0,
+                lPad: 50.0,
+                bPad: 16.0),
           ],
         ),
       ),

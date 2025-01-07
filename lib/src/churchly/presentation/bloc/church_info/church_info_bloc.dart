@@ -1,3 +1,7 @@
+
+
+import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:churchly/src/config/api.dart';
 import 'package:equatable/equatable.dart';
@@ -123,11 +127,19 @@ class ChurchInfoBloc extends Bloc<ChurchInfoEvent, ChurchInfoState> {
         };
 
         final response = await Api.addChurch(churchInfo);
-        
+
         final resStatus = int.parse(response['status']!);
 
         if (resStatus == 201) {
           emit(ChurchInfoSubmitted(accountId: response['userId']));
+          try {
+            ChurchFinanceEvent churchFinanceEvent =
+                OnGetChurchId(churchId: response['userId']);
+            BlocProvider.of<ChurchFinanceBloc>(event.context!)
+                .add(churchFinanceEvent);
+          } catch (e) {
+            if (kDebugMode) print('Emiting Error: $e');
+          }
         } else {
           emit(ChurchInfoInitial());
         }

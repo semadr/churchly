@@ -33,7 +33,7 @@ Widget dContinueButton({
         } else {
           if (isKey == 'create') {
             BlocProvider.of<ChurchInfoBloc>(context)
-                .add(SubmittedChangeEvent());
+                .add(SubmittedChangeEvent(context: context));
           } else {
             BlocProvider.of<ChurchLoginBloc>(context)
                 .add(OnSubmittedChangeEvent());

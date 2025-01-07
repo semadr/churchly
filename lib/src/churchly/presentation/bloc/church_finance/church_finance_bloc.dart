@@ -1,5 +1,6 @@
 // import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
+import 'package:churchly/src/config/api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,33 +11,60 @@ part 'church_finance_event.dart';
 part 'church_finance_state.dart';
 
 class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
-  String? item;
-  String? amount;
+  List<Map<String, String>>? expenseFinanceView;
+  List<Map<String, String>>? incomeFinanceView;
+  String? month;
+  String? churchId;
 
   ChurchFinanceBloc() : super(ChurchFinanceInitial()) {
     // Change ItemField
-    on<OnChurchFinanceChangeItem>((event, emit) {
-      try {
-        item = event.item!;
-      } catch (e) {
-        if (kDebugMode) print('Emiting Error: $e');
-      }
-    });
+    // on<OnChurchFinanceChangeItem>((event, emit) {
+    //   try {
+    //     item = event.item!;
+    //   } catch (e) {
+    //     if (kDebugMode) print('Emiting Error: $e');
+    //   }
+    // });
 
     // Change AmountField
-    on<OnChurchFinanceChangeAmount>((event, emit) {
+    // on<OnChurchFinanceChangeAmount>((event, emit) {
+    //   try {
+    //     amount = event.amount!;
+    //   } catch (e) {
+    //     if (kDebugMode) print('Emiting Error: $e');
+    //   }
+    // });
+
+    // Get ChurchID
+    on<OnGetChurchId>((event, emit) {
       try {
-        amount = event.amount!;
+        churchId = event.churchId;
       } catch (e) {
         if (kDebugMode) print('Emiting Error: $e');
       }
     });
 
     // SubmitTheFields
-    on<OnChurchFinanceSubmitted>((event, emit) {
+    on<OnChurchFinanceSubmitted>((event, emit) async {
       try {
         emit(ChurchFinanceLoading());
-        Provider.of<ChurchFinanceItemProvider>(event.context!);
+        final myEvent = Provider.of<ChurchFinanceItemProvider>(event.context!);
+        expenseFinanceView = myEvent.expenseFinanceView;
+        incomeFinanceView = myEvent.incomeFinanceView;
+        final subFinancialData = {
+          "Income": incomeFinanceView,
+          "Expense": expenseFinanceView,
+        };
+        
+        final monthData = {
+          "3": subFinancialData,
+        };
+
+        final response = await Api.updateMonthlyFinancial(
+          cid: churchId,
+          month: 12.toString(),
+          fData: subFinancialData,
+        );
       } catch (e) {
         if (kDebugMode) print('Emiting Error: $e');
       }
