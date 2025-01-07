@@ -6,6 +6,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
 
   String _item = 'item';
   String _amount = 'amount';
+  String _accountID = '';
 
   final List<Map<String, String>> _incomeFinanceView = [
     {'item': 'Offering', 'amount': 'amount'},
@@ -23,9 +24,15 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
   List<Map<String, String>>? get incomeFinanceView => _incomeFinanceView;
   String get item => _item;
   String get amount => _amount;
+  String get accountID => _accountID;
 
   void addItem(String dItem) {
     _item = dItem;
+    notifyListeners();
+  }
+
+  void getAccountID(String dAccountID) {
+    _accountID = dAccountID;
     notifyListeners();
   }
 

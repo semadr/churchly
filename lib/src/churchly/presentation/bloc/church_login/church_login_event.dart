@@ -24,6 +24,10 @@ final class CreateChurchAccount extends ChurchLoginEvent {
 }
 
 final class OnSubmittedChangeEvent extends ChurchLoginEvent {
+  final BuildContext? context;
+
+  const OnSubmittedChangeEvent({required this.context});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [context!];
 }

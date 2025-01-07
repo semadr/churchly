@@ -120,7 +120,7 @@ class Api {
         body: {
           "request ID": cid,
           "month": month,
-          "financialData": fData,
+          "financialData": fData.toString(),
         },
       );
 

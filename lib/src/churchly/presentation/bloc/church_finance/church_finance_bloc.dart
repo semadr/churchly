@@ -48,21 +48,18 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
     on<OnChurchFinanceSubmitted>((event, emit) async {
       try {
         emit(ChurchFinanceLoading());
-        final myEvent = Provider.of<ChurchFinanceItemProvider>(event.context!);
+        final myEvent = Provider.of<ChurchFinanceItemProvider>(event.context!,
+            listen: false);
         expenseFinanceView = myEvent.expenseFinanceView;
         incomeFinanceView = myEvent.incomeFinanceView;
         final subFinancialData = {
           "Income": incomeFinanceView,
           "Expense": expenseFinanceView,
         };
-        
-        final monthData = {
-          "3": subFinancialData,
-        };
 
         final response = await Api.updateMonthlyFinancial(
-          cid: churchId,
-          month: 12.toString(),
+          cid: "677d006fe44f76a062ba5dad",
+          month: 4.toString(),
           fData: subFinancialData,
         );
       } catch (e) {

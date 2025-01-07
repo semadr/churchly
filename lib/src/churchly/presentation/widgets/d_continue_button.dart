@@ -1,3 +1,4 @@
+import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
@@ -34,9 +35,14 @@ Widget dContinueButton({
           if (isKey == 'create') {
             BlocProvider.of<ChurchInfoBloc>(context)
                 .add(SubmittedChangeEvent(context: context));
-          } else {
+          }
+          if (isKey == 'login') {
             BlocProvider.of<ChurchLoginBloc>(context)
-                .add(OnSubmittedChangeEvent());
+                .add(OnSubmittedChangeEvent(context: context));
+          }
+          if (isKey == 'update') {
+            BlocProvider.of<ChurchFinanceBloc>(context)
+                .add(OnChurchFinanceSubmitted(context: context));
           }
         }
       },
