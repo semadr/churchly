@@ -58,8 +58,8 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
         };
 
         final response = await Api.updateMonthlyFinancial(
-          cid: "677d006fe44f76a062ba5dad",
-          month: 4.toString(),
+          cid: "677d006fe44f76a062ba5dad", 
+          month: "4",
           fData: subFinancialData,
         );
 

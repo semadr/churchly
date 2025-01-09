@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 // import 'package:http/http.dart';
 
 class Api {
-  static const baseUrl = "http://192.168.99.242:3000/api/rChurch/";
+  static const baseUrl = "http://192.168.20.242:3000/api/rChurch/";
 
   // #1 Add Church
 
@@ -126,10 +126,13 @@ class Api {
       // Send the request
       final response = await http.post(
         url,
-        body: {
+        body: jsonEncode({
           "requestID": cid,
           "month": month,
           "financialData": fData,
+        }),
+        headers: {
+          "Content-Type": "application/json",
         },
       );
 
@@ -153,7 +156,7 @@ class Api {
       }
     } catch (e) {
       if (kDebugMode) {
-        print("Error updataing financial data (updateMont): $e");
+        print("Error updataing financial data (updateMonth): $e");
       }
       return {
         "status": "error",
