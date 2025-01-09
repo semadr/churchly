@@ -62,6 +62,10 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
           month: 4.toString(),
           fData: subFinancialData,
         );
+
+        if (kDebugMode) {
+          print(response);
+        }
       } catch (e) {
         if (kDebugMode) print('Emiting Error: $e');
       }

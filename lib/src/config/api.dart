@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 // import 'package:http/http.dart';
 
 class Api {
-  static const baseUrl = "http://192.168.0.166:3000/api/rChurch/";
+  static const baseUrl = "http://192.168.99.242:3000/api/rChurch/";
 
   // #1 Add Church
 
@@ -110,17 +110,26 @@ class Api {
 
   // #3 Update Church Financial Info to database.
 
-  static Future<Map<String, dynamic>?> updateMonthlyFinancial({
-      String? cid, String? month, Map? fData}) async {
+  static Future<Map<String, dynamic>?> updateMonthlyFinancial(
+      {String? cid, String? month, Map<String, dynamic>? fData}) async {
     Uri url = Uri.parse("${baseUrl}updateFinanceData");
 
     try {
+      // Validate input parameters
+      if (cid!.isEmpty || month!.isEmpty || fData!.isEmpty) {
+        return {
+          "status": "error",
+          "message": "Invalid parameters provided.",
+        };
+      }
+
+      // Send the request
       final response = await http.post(
         url,
         body: {
-          "request ID": cid,
+          "requestID": cid,
           "month": month,
-          "financialData": fData.toString(),
+          "financialData": fData,
         },
       );
 
