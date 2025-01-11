@@ -111,7 +111,9 @@ class Api {
   // #3 Update Church Financial Info to database.
 
   static Future<Map<String, dynamic>?> updateMonthlyFinancial(
-      {String? cid, String? month, Map<String, dynamic>? fData}) async {
+      {String? cid,
+      String? month,
+      Map<String, List<Map<String, String>>?>? fData}) async {
     Uri url = Uri.parse("${baseUrl}updateFinanceData");
 
     try {
@@ -127,7 +129,7 @@ class Api {
       final response = await http.post(
         url,
         body: jsonEncode({
-          "requestID": cid,
+          "churchID": cid,
           "month": month,
           "financialData": fData,
         }),
