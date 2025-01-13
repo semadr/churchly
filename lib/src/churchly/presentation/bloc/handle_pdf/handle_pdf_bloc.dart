@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:churchly/src/churchly/presentation/providers/pdf/save_and_open_pdf.dart';
+// import 'package:churchly/src/churchly/presentation/providers/pdf/save_and_open_pdf.dart';
 import 'package:churchly/src/churchly/presentation/providers/pdf/table_pdf_api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class HandlePdfBloc extends Bloc<HandlePdfEvent, HandlePdfState> {
       try {
         emit(HandlePdfLoading());
         final tablePdf = await TablePdfApi.generateTablePdf();
-        // SaveAndOpenDocument.openPdf(tablePdf);
+        SaveAndOpenDocument.openPdf(tablePdf);
         emit(HandlePdfOpenSuccess(tablePdf: tablePdf));
       } catch (e) {
         if (kDebugMode) {
