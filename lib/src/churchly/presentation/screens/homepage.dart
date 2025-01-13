@@ -34,7 +34,8 @@ class _WrapperState extends State<Wrapper> {
               return BlocBuilder<HandlePdfBloc, HandlePdfState>(
                 builder: (context, pstate) {
                   if (pstate is HandlePdfOpenSuccess) {
-                    return;
+                    // TODO: Add The Page for the PDF
+                    return FinanceView(accountId: state.accountId);
                   } else if (pstate is HandlePdfLoading) {
                     return const LoadingView();
                   } else {
