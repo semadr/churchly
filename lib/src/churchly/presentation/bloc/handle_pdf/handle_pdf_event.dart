@@ -7,10 +7,10 @@ sealed class HandlePdfEvent extends Equatable {
   List<Object> get props => [];
 }
 
-final class HandlePdfOpenEvent extends HandlePdfEvent {
+final class OnHandlePdfOpenEvent extends HandlePdfEvent {
   final BuildContext? context;
 
-  const HandlePdfOpenEvent({required this.context});
+  const OnHandlePdfOpenEvent({required this.context});
 
   @override
   List<Object> get props => [context!];

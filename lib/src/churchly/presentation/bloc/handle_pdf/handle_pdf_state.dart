@@ -11,4 +11,11 @@ final class HandlePdfInitial extends HandlePdfState {}
 
 final class HandlePdfLoading extends HandlePdfState {}
 
-final class HandlePdfOpenSuccess extends HandlePdfState {}
+final class HandlePdfOpenSuccess extends HandlePdfState {
+  final File? tablePdf;
+
+  const HandlePdfOpenSuccess({required this.tablePdf});
+
+  @override
+  List<Object> get props => [tablePdf!];
+}

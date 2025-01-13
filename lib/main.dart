@@ -3,6 +3,7 @@ import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/churchly/presentation/screens/homepage.dart';
+import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
 // import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
 import 'package:churchly/src/churchly/presentation/screens/routes/d_routes.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +44,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: ((context) => ChurchLoginBloc())),
           BlocProvider(create: ((context) => ChurchFinanceBloc()))
         ],
-        child: const Wrapper(),
-        // child: const FinanceView(accountId: 'AGid'),
+        // child: const Wrapper(),
+        child: const FinanceView(accountId: 'AGid'),
       ),
       debugShowCheckedModeBanner: false,
     );

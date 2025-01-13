@@ -1,6 +1,7 @@
 import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
+import 'package:churchly/src/churchly/presentation/bloc/handle_pdf/handle_pdf_bloc.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
@@ -46,13 +47,14 @@ Widget dContinueButton({
           }
           if (isKey == 'print') {
             // Make a Sum of all the Values
-            final myEvent =
+            final fEvent =
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false);
-            myEvent.sumIAmount();
-            myEvent.sumEAmount();
+            fEvent.sumIAmount();
+            fEvent.sumEAmount();
+            final pEvent = BlocProvider.of<HandlePdfBloc>(context);
+            pEvent.add(OnHandlePdfOpenEvent(context: context));
 
             // Generate Working Monthly Income
-
 
             // Generate PDF carrying the Tables
           }
