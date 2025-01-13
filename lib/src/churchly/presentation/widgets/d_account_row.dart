@@ -42,7 +42,9 @@ Widget dAccountRow({
           dFinanceFormField(
             context: context,
             labelHint: 'Amount',
-            textInputType: TextInputType.number,
+            textInputType: TextInputType.text,
+            // Add a Checker that produces an alert bar if the
+            // variables inputed are not all numbers...
             fWidth: 100.0,
             lPad: 8.0,
             rPad: 0.0,

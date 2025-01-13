@@ -49,7 +49,7 @@ Widget dFinanceFormField({
             }
           }
         },
-        onChanged: (dInput) async {},
+        // onChanged: (dInput) async {},
         controller: textEditingController,
         keyboardType: textInputType,
         decoration: InputDecoration(

@@ -44,6 +44,18 @@ Widget dContinueButton({
             BlocProvider.of<ChurchFinanceBloc>(context)
                 .add(OnChurchFinanceSubmitted(context: context));
           }
+          if (isKey == 'print') {
+            // Make a Sum of all the Values
+            final myEvent =
+                Provider.of<ChurchFinanceItemProvider>(context, listen: false);
+            myEvent.sumIAmount();
+            myEvent.sumEAmount();
+
+            // Generate Working Monthly Income
+
+
+            // Generate PDF carrying the Tables
+          }
         }
       },
       style: ButtonStyle(

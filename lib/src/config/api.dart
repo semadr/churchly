@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 // import 'package:http/http.dart';
 
 class Api {
-  static const baseUrl = "http://192.168.20.242:3000/api/rChurch/";
+  static const baseUrl = "http://192.168.117.242:3000/api/rChurch/";
 
   // #1 Add Church
 

@@ -43,9 +43,12 @@ dependencies:
 
   # Files
   path_provider:
+  pdf: ^3.11.1
+  open_file:
 
   # Server
   http:
+  mongo_dart:
 
 dev_dependencies:
   flutter_test:

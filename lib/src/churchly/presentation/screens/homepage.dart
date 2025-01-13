@@ -1,5 +1,7 @@
+import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
+import 'package:churchly/src/churchly/presentation/bloc/handle_pdf/handle_pdf_bloc.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/login_view.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/mobile_view.dart';
@@ -22,8 +24,27 @@ class _WrapperState extends State<Wrapper> {
     return BlocBuilder<ChurchLoginBloc, ChurchLoginState>(
         builder: (context, state) {
       if (state is ChurchLoginSubmitted) {
-        return FinanceView(
-          accountId: state.accountId,
+        return BlocBuilder<ChurchFinanceBloc, ChurchFinanceState>(
+          builder: (context, fstate) {
+            if (fstate is ChurchFinanceLoading) {
+              return const LoadingView();
+            } else if (fstate is ChurchFinanceCreateSuceeded) {
+              return FinanceView(accountId: state.accountId);
+            } else {
+              return BlocBuilder<HandlePdfBloc, HandlePdfState>(
+                builder: (context, pstate) {
+                  if (pstate is HandlePdfOpenSuccess) {
+                    return;
+                  } else if (pstate is HandlePdfLoading) {
+                    return const LoadingView();
+                  } else {
+                    return FinanceView(accountId: state.accountId);
+                  }
+                },
+              );
+              // return FinanceView(accountId: state.accountId);
+            }
+          },
         );
       } else if (state is ChurchLoginCreateChurch) {
         return BlocBuilder<ChurchInfoBloc, ChurchInfoState>(
