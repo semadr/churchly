@@ -1,5 +1,3 @@
-
-
 import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 // import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:flutter/widgets.dart';
@@ -29,6 +27,7 @@ class ChurchInfoBloc extends Bloc<ChurchInfoEvent, ChurchInfoState> {
     on<BranchNameChangeEvent>((event, emit) {
       try {
         branchName = event.branchName!;
+
       } catch (e) {
         if (kDebugMode) {
           print('Emiting error: $e');
@@ -127,6 +126,8 @@ class ChurchInfoBloc extends Bloc<ChurchInfoEvent, ChurchInfoState> {
           "accountMonth": accountMonth!,
           "accountYear": accountYear!,
         };
+
+        // Call Provider From ChurchInfoProvider
 
         final response = await Api.addChurch(churchInfo);
 

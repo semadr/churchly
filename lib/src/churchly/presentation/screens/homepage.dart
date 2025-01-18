@@ -2,7 +2,6 @@ import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_fi
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/handle_pdf/handle_pdf_bloc.dart';
-import 'package:churchly/src/churchly/presentation/providers/pdf/save_and_open_pdf.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/login_view.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/mobile_view.dart';
@@ -35,7 +34,7 @@ class _WrapperState extends State<Wrapper> {
               return BlocBuilder<HandlePdfBloc, HandlePdfState>(
                 builder: (context, pstate) {
                   if (pstate is HandlePdfOpenSuccess) {
-                    SaveAndOpenDocument.openPdf(pstate.tablePdf!);
+                    // SaveAndOpenDocument.openPdf(pstate.tablePdf!);
                     return FinanceView(accountId: state.accountId);
                   } else if (pstate is HandlePdfLoading) {
                     return const LoadingView();

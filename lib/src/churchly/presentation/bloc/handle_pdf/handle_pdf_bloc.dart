@@ -16,9 +16,10 @@ class HandlePdfBloc extends Bloc<HandlePdfEvent, HandlePdfState> {
     on<OnHandlePdfOpenEvent>((event, emit) async {
       try {
         emit(HandlePdfLoading());
-        final tablePdf = await TablePdfApi.generateTablePdf();
-        SaveAndOpenDocument.openPdf(tablePdf);
+        final tablePdf = await TablePdfApi.generateTablePdf(event.context);
+
         emit(HandlePdfOpenSuccess(tablePdf: tablePdf));
+        SaveAndOpenDocument.openPdf(tablePdf);
       } catch (e) {
         if (kDebugMode) {
           print(e);

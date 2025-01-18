@@ -32,6 +32,9 @@ Widget dContinueButton({
           Navigator.of(context).pop();
           Provider.of<ChurchFinanceItemProvider>(context, listen: false)
               .clearItemAmount();
+        } else if (isKey == "print") {
+          BlocProvider.of<HandlePdfBloc>(context)
+              .add(OnHandlePdfOpenEvent(context: context));
         } else {
           if (isKey == 'create') {
             BlocProvider.of<ChurchInfoBloc>(context)
@@ -51,8 +54,6 @@ Widget dContinueButton({
                 Provider.of<ChurchFinanceItemProvider>(context, listen: false);
             fEvent.sumIAmount();
             fEvent.sumEAmount();
-            final pEvent = BlocProvider.of<HandlePdfBloc>(context);
-            pEvent.add(OnHandlePdfOpenEvent(context: context));
 
             // Generate Working Monthly Income
 

@@ -1,6 +1,7 @@
 import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
+import 'package:churchly/src/churchly/presentation/bloc/handle_pdf/handle_pdf_bloc.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 // import 'package:churchly/src/churchly/presentation/screens/homepage.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
@@ -24,8 +25,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: ((context) => ChurchInfoBloc())),
           BlocProvider(create: ((context) => ChurchLoginBloc())),
-          BlocProvider(create: ((context) => ChurchFinanceBloc()))
+          BlocProvider(create: ((context) => ChurchFinanceBloc())),
+          BlocProvider(create: ((context) => HandlePdfBloc()))
         ],
         // child: const Wrapper(),
         child: const FinanceView(accountId: 'AGid'),
