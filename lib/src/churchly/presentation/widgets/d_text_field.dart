@@ -5,19 +5,22 @@ import 'package:churchly/src/core/usecases/d_field_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Widget dTextFormField({
-  required final BuildContext context,
-  required final String labelName,
-  required final String labelHint,
-  required final TextInputType textInputType,
-  required final String labelKey,
-}) {
-  final TextEditingController textEditingController = TextEditingController();
+class DTextFormField extends StatelessWidget {
+   
+   final String labelName;
+   final String labelHint;
+   final TextInputType textInputType;
+   final String labelKey;
+
+  const DTextFormField({super.key,  required this.labelName, required this.labelHint, required this.textInputType, required this.labelKey,});
+
+  @override
+  Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
   final DColors dColors = DColors();
   final DFonts dFonts = DFonts();
 
-  //
-  return SizedBox(
+    return SizedBox(
     width: double.infinity,
     child: Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
@@ -97,4 +100,5 @@ Widget dTextFormField({
       ),
     ),
   );
+  }
 }

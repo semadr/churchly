@@ -54,19 +54,16 @@ class FinanceView extends StatelessWidget {
           shrinkWrap: true,
           physics: const ClampingScrollPhysics(),
           children: [
-            dAccountID(
-              context: context,
+            DAccountID(
               dColors: dColors,
               accountId: accountId!,
               dFonts: dFonts,
             ),
-            dMonthPick(
-              context: context,
+            DMonthPick(
               dColors: dColors,
               dFonts: dFonts,
             ),
-            dAccountContainer(
-              fcontext: context,
+            DAccountContainer(
               fData:
                   context.watch<ChurchFinanceItemProvider>().incomeFinanceView!,
               dColors: dColors,
@@ -74,8 +71,7 @@ class FinanceView extends StatelessWidget {
               dCart: 'Income',
               accounttBoxRealTimeDate: 'August 18th',
             ),
-            dAccountContainer(
-              fcontext: context,
+            DAccountContainer(
               fData: context
                   .watch<ChurchFinanceItemProvider>()
                   .expenseFinanceView!,
@@ -84,16 +80,14 @@ class FinanceView extends StatelessWidget {
               dCart: 'Expenses',
               accounttBoxRealTimeDate: 'August 18th',
             ),
-            dContinueButton(
-              context: context,
+            const DContinueButton(
               isKey: 'update',
               dButtonValue: 'Save Month',
               rPad: 50.0,
               lPad: 50.0,
               bPad: 16.0,
             ),
-            dContinueButton(
-              context: context,
+            const DContinueButton(
               isKey: 'print',
               dButtonValue: 'Generate Sheet',
               rPad: 50.0,

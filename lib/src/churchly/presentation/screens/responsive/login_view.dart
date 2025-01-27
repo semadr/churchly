@@ -28,22 +28,19 @@ class LoginView extends StatelessWidget {
                     const AssetImage('assets/images/ic_launcher.png'),
               ),
             ),
-            dLoginFormField(
-              context: context,
+            const DLoginFormField(
               labelName: 'Account ID',
               labelHint: 'AGaccount_id',
               textInputType: TextInputType.text,
             ),
-            dContinueButton(
-              context: context,
+            const DContinueButton(
               dButtonValue: 'Continue',
               isKey: 'login',
               rPad: 50.0,
               lPad: 50.0,
               bPad: 16.0,
             ),
-            dRegisterChurch(
-              context: context,
+            DRegisterChurch(
               dColors: dColors,
               dFonts: dFonts,
             ),

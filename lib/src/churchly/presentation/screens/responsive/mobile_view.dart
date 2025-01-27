@@ -14,48 +14,42 @@ class MobileView extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         physics: const ClampingScrollPhysics(),
-        children: [
-          dHeaderWidget(
+        children: const [
+          DHeaderWidget(
             dHeaderText: 'Welcome to ',
             dChurchlyLogo: 'assets/images/churchly-logo-black.png',
           ),
-          dTextFormField(
-            context: context,
+          DTextFormField(
             labelKey: 'branchName',
             labelName: 'Branch Name: ',
             labelHint: 'E.g. No. A.G. Ikot Effiom Eyamba',
             textInputType: TextInputType.text,
           ),
-          dTextFormField(
-            context: context,
+          DTextFormField(
             labelKey: 'address',
             labelName: 'Address: ',
             labelHint: 'E.g. No. 8, Itak Ikot Street',
             textInputType: TextInputType.text,
           ),
-          dTextFormField(
-            context: context,
+          DTextFormField(
             labelKey: 'pastorName',
             labelName: 'Pastor\'s Name: ',
             labelHint: 'E.g. Rev. Chilaka Nna',
             textInputType: TextInputType.text,
           ),
-          dTextFormField(
-            context: context,
+          DTextFormField(
             labelKey: 'pastorNumber',
             labelName: 'Pastor\'s Phone No: ',
             labelHint: 'E.g. 08101849506',
             textInputType: TextInputType.phone,
           ),
-          dTextFormField(
-            context: context,
+          DTextFormField(
             labelKey: 'treasurerName',
             labelName: 'Treasurer\'s Name: ',
             labelHint: 'E.g. Deac. Atu Michael',
             textInputType: TextInputType.text,
           ),
-          dTextFormField(
-            context: context,
+          DTextFormField(
             labelKey: 'treasurerNumber',
             labelName: 'Treasurer\'s Phone No: ',
             labelHint: 'E.g. 08101849506',
@@ -64,8 +58,7 @@ class MobileView extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: dTextFormField(
-                  context: context,
+                child: DTextFormField(
                   labelKey: 'accountMonth',
                   labelName: 'Month: ',
                   labelHint: 'E.g. 12',
@@ -73,8 +66,7 @@ class MobileView extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: dTextFormField(
-                  context: context,
+                child: DTextFormField(
                   labelKey: 'accountYear',
                   labelName: 'Year: ',
                   labelHint: 'E.g. 2003',
@@ -83,8 +75,7 @@ class MobileView extends StatelessWidget {
               ),
             ],
           ),
-          dContinueButton(
-            context: context,
+          DContinueButton(
             dButtonValue: 'Continue',
             isKey: 'create',
             rPad: 50.0,
