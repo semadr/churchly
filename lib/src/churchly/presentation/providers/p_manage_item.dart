@@ -11,15 +11,25 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
   String _eTotal = '';
 
   final List<Map<String, String>> _incomeFinanceView = [
-    {'item': 'Offering', 'amount': '120000'},
-    {'item': 'Tithe', 'amount': '70000'},
-    {'item': 'Building without Tears', 'amount': '50000'},
+    {'item': 'Week 1 Income', 'amount': '0'},
+    {'item': 'Week 2 Income', 'amount': '0'},
+    {'item': 'Week 3 Income', 'amount': '0'},
+    {'item': 'Week 4 Income', 'amount': '0'},
   ];
   final List<Map<String, String>> _expenseFinanceView = [
-    {'item': 'Fuel', 'amount': '4000'},
-    {'item': 'Passonage Rent', 'amount': '20000'},
-    {'item': 'Children', 'amount': '8000'},
-    {'item': 'Snacks', 'amount': '5000'},
+    {'item': '% To the District', 'amount': '0'},
+    {'item': 'Minister’s Allowance', 'amount': '0'},
+    {'item': 'Minister’s Tithe', 'amount': '0'},
+    {'item': '10% to Pension (Church)', 'amount': '0'},
+    {'item': '5% to Pension (Personal): ', 'amount': '0'},
+    {'item': 'Missionary Offering: ', 'amount': '0'},
+    {'item': '3% to Project development fund (P.D.F.)', 'amount': '0'},
+    {'item': '3% to Section', 'amount': '0'},
+    {'item': '2% to Evangel University', 'amount': '0'},
+    {'item': '2% to District make up', 'amount': '0'},
+    {'item': 'Exchange of pulpit', 'amount': '0'},
+
+    
   ];
 
   List<Map<String, String>>? get expenseFinanceView => _expenseFinanceView;

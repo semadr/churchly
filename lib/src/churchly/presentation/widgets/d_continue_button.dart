@@ -43,9 +43,6 @@ class DContinueButton extends StatelessWidget {
             Navigator.of(context).pop();
             Provider.of<ChurchFinanceItemProvider>(context, listen: false)
                 .clearItemAmount();
-          } else if (isKey == "print") {
-            BlocProvider.of<HandlePdfBloc>(context)
-                .add(OnHandlePdfOpenEvent(context: context));
           } else {
             if (isKey == 'create') {
               BlocProvider.of<ChurchInfoBloc>(context)
@@ -63,12 +60,13 @@ class DContinueButton extends StatelessWidget {
               // Make a Sum of all the Values
               final fEvent = Provider.of<ChurchFinanceItemProvider>(context,
                   listen: false);
+              // Generate Working Monthly Income
               fEvent.sumIAmount();
               fEvent.sumEAmount();
 
-              // Generate Working Monthly Income
-
               // Generate PDF carrying the Tables
+              BlocProvider.of<HandlePdfBloc>(context)
+                  .add(OnHandlePdfOpenEvent(context: context));
             }
           }
         },

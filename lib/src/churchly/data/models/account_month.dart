@@ -2,8 +2,8 @@ import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
 import 'package:flutter/material.dart';
 
-class AccountMonth {
-  List<String> months = [
+class AccountMonthProvider extends ChangeNotifier {
+  final List<String> _months = [
     'January',
     'February',
     'March',
@@ -18,9 +18,14 @@ class AccountMonth {
     'December',
   ];
 
+  String _activeMonth = 'January';
+
+  
+  String get activeMonth => _activeMonth;
+
   static List<DropdownMenuEntry<String?>> accountMonthChildren() {
     // Month Length.
-    int mLength = AccountMonth().months.length;
+    int mLength = AccountMonthProvider()._months.length;
     // Length of the Producing Widgets.
     List<DropdownMenuEntry<String?>> fLength = [];
     for (int i = 0; i < mLength; i++) {
@@ -31,10 +36,15 @@ class AccountMonth {
           size: DFonts().dFontBody1Size,
           color: DColors().dBlackColor,
         ),
-        label: AccountMonth().months[i],
-        value: AccountMonth().months[i],
+        label: AccountMonthProvider()._months[i],
+        value: AccountMonthProvider()._months[i],
       ));
     }
     return fLength;
+  }
+
+  void setActiveMonth(String? pickMonth) {
+    _activeMonth = pickMonth!;
+    notifyListeners();
   }
 }

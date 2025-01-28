@@ -1,11 +1,10 @@
+import 'package:churchly/src/churchly/data/models/account_month.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/church_login/church_login_bloc.dart';
 import 'package:churchly/src/churchly/presentation/bloc/handle_pdf/handle_pdf_bloc.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
-// import 'package:churchly/src/churchly/presentation/screens/homepage.dart';
 import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
-// import 'package:churchly/src/churchly/presentation/screens/responsive/finance_view.dart';
 import 'package:churchly/src/churchly/presentation/screens/routes/d_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +15,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ChurchFinanceItemProvider()),
+        ChangeNotifierProvider(create: (_) => AccountMonthProvider()),
       ],
       child: const MyApp(),
     ),

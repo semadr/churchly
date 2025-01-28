@@ -1,3 +1,4 @@
+import 'package:churchly/src/churchly/data/models/account_month.dart';
 import 'package:churchly/src/churchly/presentation/bloc/d_manage_item.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/churchly/presentation/widgets/d_account_container.dart';
@@ -52,7 +53,7 @@ class FinanceView extends StatelessWidget {
         body: ListView(
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
+          physics: const PageScrollPhysics(),
           children: [
             DAccountID(
               dColors: dColors,
@@ -69,7 +70,8 @@ class FinanceView extends StatelessWidget {
               dColors: dColors,
               dFonts: dFonts,
               dCart: 'Income',
-              accounttBoxRealTimeDate: 'August 18th',
+              accounttBoxRealTimeDate:
+                  context.watch<AccountMonthProvider>().activeMonth,
             ),
             DAccountContainer(
               fData: context
@@ -78,7 +80,8 @@ class FinanceView extends StatelessWidget {
               dColors: dColors,
               dFonts: dFonts,
               dCart: 'Expenses',
-              accounttBoxRealTimeDate: 'August 18th',
+              accounttBoxRealTimeDate:
+                  context.watch<AccountMonthProvider>().activeMonth,
             ),
             const DContinueButton(
               isKey: 'update',

@@ -50,8 +50,11 @@ class TablePdfApi {
           ),
           generateFinanceSubHeader('MONTH ACCOUNT TOTAL'),
           generateFinanceTable(fData, headers, 0),
+          generateFinanceTotal(financialData.iTotal),
+          generateFinanceSubHeader('MONTH ACCOUNT TOTAL'),
           generateFinanceSubHeader('EXPENSE'),
           generateFinanceTable(fData, headers, 1),
+          generateFinanceTotal(financialData.eTotal),
         ],
       ),
     );
@@ -106,6 +109,22 @@ class TablePdfApi {
         child: Text(
           textAlign: TextAlign.center,
           fDataType,
+          style: TextStyle(
+            fontSize: 16.0,
+            color: PdfColors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      );
+
+        static Widget generateFinanceTotal(String fTotal) => Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8.0,
+        ),
+        alignment: Alignment.centerRight,
+        child: Text(
+          textAlign: TextAlign.right,
+          fTotal,
           style: TextStyle(
             fontSize: 16.0,
             color: PdfColors.black,

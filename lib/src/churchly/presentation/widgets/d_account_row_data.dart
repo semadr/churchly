@@ -29,21 +29,24 @@ class DAccountRowData extends StatelessWidget {
             color: dColors.dTransColor,
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: Text(
-                '$dItem: $dAmount',
-                style: TextStyle(
-                  fontSize: dFonts.dFontBody1Size,
-                  color: dColors.dBlackColor,
-                  fontWeight: dFonts.dFontBodyWeight,
+        child: SingleChildScrollView(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  '$dItem: $dAmount',
+                  overflow: TextOverflow.fade,
+                  style: TextStyle(
+                    fontSize: dFonts.dFontBody1Size,
+                    color: dColors.dBlackColor,
+                    fontWeight: dFonts.dFontBodyWeight,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

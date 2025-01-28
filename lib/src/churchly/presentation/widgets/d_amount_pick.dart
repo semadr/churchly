@@ -1,8 +1,8 @@
 import 'package:churchly/src/churchly/data/models/account_month.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DMonthPick extends StatelessWidget {
   final DColors dColors;
@@ -43,14 +43,13 @@ class DMonthPick extends StatelessWidget {
               ),
             ),
             DropdownMenu(
-              onSelected: (value) {
-                if (kDebugMode) {
-                  print(value);
-                }
+              onSelected: (pickMonth) {
+                Provider.of<AccountMonthProvider>(context, listen: false)
+                    .setActiveMonth(pickMonth);
               },
               menuHeight: dHeight - (dHeight / 2),
               width: 180.0,
-              hintText: 'August',
+              hintText: context.watch<AccountMonthProvider>().activeMonth,
               enabled: true,
               inputDecorationTheme: InputDecorationTheme(
                 fillColor: dColors.dSecondaryColor.withOpacity(.25),
@@ -91,7 +90,7 @@ class DMonthPick extends StatelessWidget {
                 backgroundColor:
                     MaterialStatePropertyAll(dColors.dSecondaryColor),
               ),
-              dropdownMenuEntries: AccountMonth.accountMonthChildren(),
+              dropdownMenuEntries: AccountMonthProvider.accountMonthChildren(),
             ),
           ],
         ),
