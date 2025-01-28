@@ -73,7 +73,7 @@ class DAccountContainer extends StatelessWidget {
               width: double.infinity,
               child: ListView.builder(
                 shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
+                physics: const PageScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemCount: fData.length,
                 itemBuilder: (context, int index) {

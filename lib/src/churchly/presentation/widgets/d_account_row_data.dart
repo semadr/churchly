@@ -30,6 +30,7 @@ class DAccountRowData extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

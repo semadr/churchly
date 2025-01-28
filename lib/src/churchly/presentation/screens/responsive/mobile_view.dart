@@ -13,7 +13,7 @@ class MobileView extends StatelessWidget {
       body: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        physics: const ClampingScrollPhysics(),
+        physics: const PageScrollPhysics(),
         children: const [
           DHeaderWidget(
             dHeaderText: 'Welcome to ',
