@@ -1,11 +1,11 @@
-import 'package:churchly/src/churchly/presentation/bloc/church_finance/church_finance_bloc.dart';
+import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 // import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:churchly/src/config/api.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 part 'church_info_event.dart';
 part 'church_info_state.dart';
@@ -27,7 +27,6 @@ class ChurchInfoBloc extends Bloc<ChurchInfoEvent, ChurchInfoState> {
     on<BranchNameChangeEvent>((event, emit) {
       try {
         branchName = event.branchName!;
-
       } catch (e) {
         if (kDebugMode) {
           print('Emiting error: $e');
@@ -135,14 +134,13 @@ class ChurchInfoBloc extends Bloc<ChurchInfoEvent, ChurchInfoState> {
 
         if (resStatus == 201) {
           emit(ChurchInfoSubmitted(accountId: response['userId']));
-          // final dEvent = Provider.of<ChurchFinanceItemProvider>(event.context!,
-          //     listen: false);
-          // dEvent.getAccountID(response['userId']!);
           try {
-            ChurchFinanceEvent churchFinanceEvent =
-                OnGetChurchId(churchId: response['userId']);
-            BlocProvider.of<ChurchFinanceBloc>(event.context!)
-                .add(churchFinanceEvent);
+            final dEvent = Provider.of<ChurchFinanceItemProvider>(
+                event.context!,
+                listen: false);
+
+            dEvent.getAccountID(response['userId']!);
+
           } catch (e) {
             if (kDebugMode) print('Emiting Error: $e');
           }

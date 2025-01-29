@@ -1,17 +1,22 @@
 import 'package:churchly/src/churchly/data/models/account_month.dart';
+import 'package:churchly/src/churchly/presentation/bloc/church_info/church_info_bloc.dart';
 import 'package:churchly/src/core/constants/dcolors.dart';
 import 'package:churchly/src/core/constants/dfonts.dart';
+import 'package:churchly/src/core/usecases/d_field_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 class DMonthPick extends StatelessWidget {
   final DColors dColors;
   final DFonts dFonts;
+  final String labelKey;
 
   const DMonthPick({
     super.key,
     required this.dColors,
     required this.dFonts,
+    required this.labelKey,
   });
 
   @override
@@ -46,6 +51,10 @@ class DMonthPick extends StatelessWidget {
               onSelected: (pickMonth) {
                 Provider.of<AccountMonthProvider>(context, listen: false)
                     .setActiveMonth(pickMonth);
+                DFieldEvent dFieldEvent = DFieldEvent();
+                ChurchInfoEvent event =
+                    dFieldEvent.findFieldEvent(pickMonth, labelKey);
+                BlocProvider.of<ChurchInfoBloc>(context).add(event);
               },
               menuHeight: dHeight - (dHeight / 2),
               width: 180.0,

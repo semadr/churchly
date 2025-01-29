@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class Api {
   // static const baseUrl = "http://192.168.117.242:3000/api/rChurch/";
-  static const baseUrl = "https://py49ayz5rj.execute-api.eu-north-1.amazonaws.com/dev/api/rChurch/";
+  static const baseUrl = "https://64n6a4r4ql.execute-api.eu-north-1.amazonaws.com/default/api/rChurch/";
 
   // #1 Add Church
 

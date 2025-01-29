@@ -9,6 +9,7 @@ class ChurchFinanceItemProvider extends ChangeNotifier {
   String _accountID = '';
   String _iTotal = '';
   String _eTotal = '';
+  
 
   final List<Map<String, String>> _incomeFinanceView = [
     {'item': 'Week 1 Income', 'amount': '0'},

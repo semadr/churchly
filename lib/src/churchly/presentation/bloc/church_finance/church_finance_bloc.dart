@@ -1,4 +1,5 @@
 // import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
+import 'package:churchly/src/churchly/data/models/account_month.dart';
 import 'package:churchly/src/churchly/presentation/providers/p_manage_item.dart';
 import 'package:churchly/src/config/api.dart';
 import 'package:flutter/foundation.dart';
@@ -52,14 +53,15 @@ class ChurchFinanceBloc extends Bloc<ChurchFinanceEvent, ChurchFinanceState> {
             listen: false);
         expenseFinanceView = myEvent.expenseFinanceView;
         incomeFinanceView = myEvent.incomeFinanceView;
+
         final subFinancialData = {
           "Income": incomeFinanceView,
           "Expense": expenseFinanceView,
         };
 
         final response = await Api.updateMonthlyFinancial(
-          cid: "677d006fe44f76a062ba5dad", 
-          month: "4",
+          cid: myEvent.accountID, 
+          month: Provider.of<AccountMonthProvider>(event.context!, listen: false).activeMonth,
           fData: subFinancialData,
         );
 

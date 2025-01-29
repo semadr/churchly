@@ -63,6 +63,7 @@ class FinanceView extends StatelessWidget {
             DMonthPick(
               dColors: dColors,
               dFonts: dFonts,
+              labelKey: 'accountMonth',
             ),
             DAccountContainer(
               fData:
